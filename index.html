@@ -7,152 +7,136 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..900;1,9..144,500..900&family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700;800;900&display=swap">
 <style>
-/* Layout: full-bleed bands alternating white / black (NOVA rhythm); one oversized serif head per band; content on a 1200px column; hairline grids, zero radius, no shadows on the page chrome. Previews inside cards keep each style's own colours. */
+/* Layout: Nova Sapiens / NOVA TEENS instruction style. Rounded "slide" panels on a lavender page; blue cover; pastel chips; blue numbered circles; prompt boxes with a blue left rail and a copy pill. */
 :root{
-  --accent:#FF4C00;
-  --ink:#0A0A0A;
-  --paper:#FFFFFF;
-  --grey-city:#D6D6D6;
-  --line-light:#E5E5E5;
-  --line-dark:#2A2A2A;
-  --serif:"Fraunces","Times New Roman",Georgia,serif;
-  --sans:"Space Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-  --ease:cubic-bezier(.22,1,.36,1);
+  --blue:#433AE8; --blue-d:#2D24C4; --lb:#D5E6FD; --yel:#FFF1C0; --mint:#D6FFDC; --pink:#FFDAFA; --rose:#E53962;
+  --ink:#1B1840; --ink2:#4E4B72; --line:rgba(67,58,232,.16); --paper:#FAFAFF; --page:#E4E3F3; --gl:rgba(67,58,232,.075);
+  --font:"Urbanist","Segoe UI",system-ui,sans-serif;
+  --mono:"Cascadia Mono",Consolas,ui-monospace,monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
-a{color:inherit}
-p{margin:0;max-width:65ch}
-h1,h2,h3{font-family:var(--serif);margin:0;text-wrap:balance}
-h1{font-size:clamp(2.8rem,9.5vw,8.2rem);line-height:.9;letter-spacing:-.035em;font-weight:850}
-h2{font-size:clamp(2.2rem,6.2vw,5.2rem);line-height:.95;letter-spacing:-.03em;font-weight:820}
-h3{font-size:clamp(1.3rem,2.1vw,1.7rem);line-height:1.05;letter-spacing:-.015em;font-weight:720}
-em{font-style:italic;color:var(--accent);font-weight:inherit}
-code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px solid var(--line);padding:.08em .35em;word-break:break-word}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);font-weight:500;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,h4,p{margin:0}
+b,strong{font-weight:800}
+a{color:var(--blue);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+code{font-family:var(--mono);font-size:.86em;background:var(--lb);color:var(--blue-d);border-radius:6px;padding:1px 6px;font-weight:600;word-break:break-word}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
-.band{padding-block:clamp(72px,10vw,140px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.light{background:var(--paper);color:var(--ink);--line:var(--line-light);--muted:#5F636A;--panel:#F4F4F4}
-.dark{background:var(--ink);color:var(--paper);--line:var(--line-dark);--muted:#A1A1AA;--panel:#141414}
-.wrap{max-width:1200px;margin:0 auto;display:grid;gap:clamp(40px,6vw,72px)}
-.head{display:grid;gap:22px}
-.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.kicker b{color:var(--accent);font-weight:500}
-.lead{font-size:clamp(1.05rem,1.6vw,1.28rem);max-width:58ch}
-.muted{color:var(--muted)}
-.sub{display:grid;gap:18px}
-.sub h3{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.025em}
+.deck{max-width:1200px;margin:0 auto;display:grid;gap:28px;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.panel{position:relative;border-radius:24px;box-shadow:0 12px 40px rgba(27,24,64,.12);background-color:var(--paper);padding:clamp(28px,5vw,64px);display:grid;gap:clamp(24px,3.5vw,40px);min-width:0}
+.grid-bg{background-image:linear-gradient(var(--gl) 1px,transparent 1px),linear-gradient(90deg,var(--gl) 1px,transparent 1px);background-size:44px 44px}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.chip{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--blue);white-space:nowrap}
+.chip.t0{background:var(--lb)}.chip.t1{background:var(--mint)}.chip.t2{background:var(--yel)}.chip.t3{background:var(--pink)}
+.head{display:grid;gap:12px;max-width:820px}
+h2{font-size:clamp(32px,4.6vw,46px);line-height:1.04;font-weight:800;color:var(--blue);letter-spacing:-.015em;text-wrap:balance}
+h3{font-size:21px;font-weight:800;color:var(--ink);line-height:1.2}
+.lead{font-size:clamp(18px,2vw,21px);line-height:1.5;color:var(--ink);max-width:62ch}
+.lead b{color:var(--blue-d)}
+.muted{color:var(--ink2)}
+.sub-title{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-d)}
 
 /* nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:calc(18px + env(safe-area-inset-top,0px));padding-bottom:18px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));mix-blend-mode:difference;color:#fff;pointer-events:none}
-.nav a{pointer-events:auto;color:#fff;text-decoration:none}
-.nav .mark{font-family:var(--serif);font-weight:900;font-size:1.55rem;letter-spacing:-.04em}
-.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
-.nav ul a{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
-@media (max-width:760px){.nav ul li:not(:last-child){display:none}}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.nav .lg{height:26px;width:auto;display:block;color:var(--blue)}
+.nav ul{display:flex;gap:8px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.nav ul a{display:inline-block;text-decoration:none;font-size:14px;font-weight:800;color:var(--blue);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.nav ul a:hover{background:var(--blue);color:#fff}
+@media (max-width:640px){.nav ul{display:none}}
 
-/* hero */
-.hero{padding-top:clamp(120px,14vw,170px)}
+/* cover */
+.cover{background-color:var(--blue);color:#fff;--gl:rgba(255,255,255,.08);grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center}
+.cover .lg{height:38px;width:auto;display:block;color:#fff}
+.cover .eyebrow{font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lb);margin-top:36px}
+.cover h1{font-size:clamp(48px,8vw,96px);line-height:.95;font-weight:800;letter-spacing:-.025em;margin:20px 0 20px;text-wrap:balance}
+.cover .sub{font-size:clamp(18px,2.1vw,23px);line-height:1.45;color:#E8E6FF;max-width:560px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.pill{display:inline-block;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.14);font-weight:800;font-size:15px;color:#fff}
+.cover-card{background:#fff;border-radius:28px;box-shadow:0 20px 60px rgba(10,6,80,.35);padding:22px 22px 16px;display:grid;gap:10px;color:var(--ink);min-width:0}
 .city{display:block;width:100%;max-width:100%;height:auto}
-.bld{fill:var(--grey-city)}
-.win{fill:#FFFFFF}
-.city-cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
-.stat{padding:22px 16px 0 0;display:grid;gap:6px}
-.stat strong{font-family:var(--serif);font-weight:850;font-size:clamp(2.4rem,5vw,4rem);line-height:.9;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-@media (max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}}
-
-/* marquee */
-.marquee{background:var(--accent);color:var(--ink);overflow:hidden;padding-block:16px;white-space:nowrap}
-.track{display:inline-flex;gap:2.2rem;animation:mq 34s linear infinite;font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(1.4rem,3vw,2.3rem);letter-spacing:-.01em}
-.track span::after{content:"✶";font-style:normal;margin-left:2.2rem}
-@keyframes mq{to{transform:translateX(-50%)}}
+.cap{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+@media (max-width:900px){.cover{grid-template-columns:minmax(0,1fr)}}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--mono);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:16px 22px;border:1px solid currentColor;border-radius:0;color:inherit;background:transparent;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
-.btn:hover,.btn:focus-visible{background:var(--accent);border-color:var(--accent);color:var(--ink)}
-.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--ink)}
-.btn.solid:hover,.btn.solid:focus-visible{background:transparent;color:var(--accent)}
-.copy{padding:10px 14px;font-size:.68rem}
-.copy.ok{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-family:var(--font);font-weight:800;font-size:16px;border:0;border-radius:999px;padding:13px 22px;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--blue-d);color:#fff}
+.copy{font:800 12.5px var(--font);color:var(--blue);background:var(--lb);border:0;border-radius:999px;padding:6px 13px;cursor:pointer;white-space:nowrap}
+.copy:hover{background:var(--blue);color:#fff}
+.copy.ok{background:var(--blue);color:#fff}
 
-/* skill block */
-.skill{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
-@media (max-width:860px){.skill{grid-template-columns:minmax(0,1fr)}}
-.skill-card{border:1px solid var(--line);display:grid}
-.skill-card .top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.skill-card .name{font-family:var(--serif);font-weight:800;font-size:1.6rem;letter-spacing:-.02em}
-.skill-card .act{padding:20px;display:grid;gap:14px;justify-items:start}
-.install{display:grid;gap:0;border-top:1px solid var(--line)}
-.install div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
-.install div:last-child{border-bottom:0}
-@media (max-width:520px){.install div{grid-template-columns:minmax(0,1fr);gap:6px}}
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;min-width:0}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.two,.three{grid-template-columns:minmax(0,1fr)}}
+.big-n{font-size:52px;font-weight:800;color:var(--blue);line-height:1}
 
-/* hairline cells */
-.cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
-@media (max-width:860px){.cells{grid-template-columns:minmax(0,1fr)}}
-.cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 24px 30px;display:grid;gap:12px;align-content:start}
-.num{font-family:var(--serif);font-weight:850;color:var(--accent);font-size:clamp(2.6rem,5vw,3.6rem);line-height:.85;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+/* steps */
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:42px minmax(0,1fr);gap:14px;align-items:start}
+.step .n{width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:20px;display:grid;place-items:center}
+.step h4{font-size:20px;font-weight:800;margin:7px 0 6px}
+.step p{font-size:16.5px;line-height:1.45;color:var(--ink2)}
+.step p b{color:var(--ink)}
 
-/* prompt blocks */
-.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media (max-width:860px){.pair{grid-template-columns:minmax(0,1fr)}}
-.prompt{border:1px solid var(--line);background:var(--panel);display:grid;min-width:0}
-.prompt header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px 10px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.prompt pre{margin:0;padding:18px;font-family:var(--sans);font-size:.98rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;min-width:0}
-.prompt pre .t{font-weight:700}
-.hint{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);padding:0 18px 16px}
+/* prompt */
+.prompt{background:#fff;border:1.5px solid var(--line);border-left:6px solid var(--blue);border-radius:14px;padding:12px 16px 14px;display:grid;gap:6px;min-width:0}
+.prompt .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.prompt .lbl{font-size:11.5px;font-weight:800;letter-spacing:.13em;color:var(--blue);text-transform:uppercase}
+.prompt pre{margin:0;font-family:var(--font);font-size:16.5px;line-height:1.45;font-weight:600;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.prompt pre .t{font-weight:800;color:var(--blue-d)}
+.ph{background:var(--yel);border-radius:6px;padding:0 4px;font-weight:800;color:#5B4A00}
+.prompt .hint{font-size:14.5px;color:var(--ink2);line-height:1.4}
 
-/* style + depth grids */
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-@media (max-width:860px){.grid3{grid-template-columns:minmax(0,1fr)}}
-.card{background:var(--paper);display:grid;grid-template-rows:auto 1fr;min-width:0}
-.dark .card{background:var(--ink)}
+.warn{background:var(--yel);border-radius:16px;padding:16px 20px;font-size:17px;line-height:1.45}
+.info{background:var(--lb);border-radius:16px;padding:16px 20px;font-size:17px;line-height:1.45}
+.tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:var(--lb);color:var(--blue-d)}
+.tag.t1{background:var(--mint)}.tag.t2{background:var(--yel)}.tag.t3{background:var(--pink)}
+
+/* skill download card */
+.skill-card{display:grid;gap:16px;align-content:start}
+.skill-card .name{font-size:26px;font-weight:800;color:var(--blue);line-height:1.1}
+.skill-card .meta{display:flex;gap:8px;flex-wrap:wrap}
+.skill-card .btn{justify-self:start}
+
+/* style & depth cards */
+.styles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.styles{grid-template-columns:minmax(0,1fr)}}
+.scard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0;box-shadow:0 8px 24px rgba(27,24,64,.06)}
 .pv{aspect-ratio:16/9;max-width:100%;overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
 .pv svg{display:block;width:100%;height:100%}
-.card .body{padding:20px 20px 22px;display:grid;gap:12px;grid-template-rows:auto auto 1fr auto;min-width:0}
-.idx{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.ptext{font-size:.9rem;line-height:1.5;color:var(--muted);margin:0}
-.card .copy{justify-self:start}
-.formula{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:baseline;font-family:var(--serif);font-weight:750;font-size:clamp(1.3rem,3vw,2.2rem);letter-spacing:-.02em;border-block:1px solid var(--line);padding-block:22px}
-.formula i{color:var(--accent)}
-.formula span.op{font-family:var(--mono);font-weight:400;font-size:.9rem;color:var(--muted)}
+.scard .body{padding:16px 18px 18px;display:grid;gap:10px;grid-template-rows:auto auto 1fr auto;min-width:0;justify-items:start}
+.scard .ptext{font-size:14.5px;line-height:1.45;color:var(--ink2);margin:0}
 
-/* lists */
-.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,64px)}
-@media (max-width:860px){.cols{grid-template-columns:minmax(0,1fr)}}
-.list{border-top:1px solid var(--line);display:grid}
-.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:baseline;padding:16px 12px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .2s var(--ease),color .2s var(--ease)}
-.row .n{font-family:var(--serif);font-weight:750;font-size:1.3rem;letter-spacing:-.01em}
-.row .d{grid-column:1/-1;font-size:.92rem;color:var(--muted)}
-.row .go{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
-.row:hover,.row:focus-visible{background:var(--accent);color:var(--ink)}
-.row:hover .d,.row:focus-visible .d{color:var(--ink)}
+.formula{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.formula .f{font-size:18px;font-weight:800;padding:10px 18px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink)}
+.formula .f.b{background:var(--blue);color:#fff;border-color:var(--blue)}
+.formula .op{font-size:22px;font-weight:800;color:var(--blue)}
 
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-@media (max-width:860px){.steps{grid-template-columns:minmax(0,1fr)}}
-.step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;border-top:1px solid var(--line);padding-top:18px}
-.step .num{font-size:2.6rem}
-
-.note{border-left:3px solid var(--accent);padding:4px 0 4px 16px;max-width:70ch}
+/* link lists */
+.links{display:grid;gap:10px}
+.lrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--ink);font-weight:500}
+.lrow .n{font-size:18px;font-weight:800;color:var(--blue)}
+.lrow .d{grid-column:1/-1;font-size:15px;color:var(--ink2);line-height:1.4}
+.lrow .go{font-size:12.5px;font-weight:800;color:var(--blue);background:var(--lb);border-radius:999px;padding:5px 11px}
+.lrow:hover{border-color:var(--blue);box-shadow:0 6px 18px rgba(67,58,232,.12)}
 
 /* poses */
-.poses{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.pose{background:var(--panel);display:grid;justify-items:center;gap:8px;padding:18px 6px 14px}
-.pose svg{width:100%;max-width:96px;height:auto}
-.pose span{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;color:var(--muted)}
-@media (max-width:520px){.pose span{font-size:.56rem;letter-spacing:.06em}}
+.poses{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.pose{border:1px solid var(--line);border-radius:16px;display:grid;justify-items:center;gap:8px;padding:16px 6px 12px}
+.pose:nth-child(1){background:var(--lb)}.pose:nth-child(2){background:var(--mint)}.pose:nth-child(3){background:var(--yel)}.pose:nth-child(4){background:var(--pink)}.pose:nth-child(5){background:#EDF3FE}
+.pose svg{width:100%;max-width:90px;height:auto}
+.pose span{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-align:center;color:var(--blue-d)}
+@media (max-width:520px){.pose span{font-size:10px;letter-spacing:0}}
 
 /* footer */
-.foot .wrap{gap:40px}
-.foot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid var(--line);padding-top:24px}
-@media (max-width:760px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
-.giant{font-family:var(--serif);font-weight:900;font-size:clamp(5rem,26vw,21rem);line-height:.78;letter-spacing:-.06em;margin:0}
-.giant i{color:var(--accent)}
+.foot{background-color:var(--blue);color:#fff;--gl:rgba(255,255,255,.08);gap:16px}
+.foot .lg{height:34px;width:auto;display:block;color:#fff}
+.foot p{color:#E8E6FF;max-width:62ch}
+.foot a{color:#fff}
 
 /* ---- preview animations ---- */
 .a-float{animation:float 4s ease-in-out infinite alternate}
@@ -167,17 +151,17 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px 
 @keyframes sun{from{transform:scale(1)}to{transform:scale(1.08)}}
 .a-bounce{transform-box:fill-box;transform-origin:50% 100%;animation:bounce 1.2s infinite}
 @keyframes bounce{0%{transform:translateY(0) scale(1.08,.9);animation-timing-function:cubic-bezier(.2,.8,.3,1)}40%{transform:translateY(-24px) scale(.95,1.07);animation-timing-function:cubic-bezier(.7,0,.8,.3)}78%{transform:translateY(0) scale(1.1,.88)}88%{transform:translateY(-3px) scale(.98,1.02)}100%{transform:translateY(0) scale(1.08,.9)}}
-.a-pop{transform-box:fill-box;transform-origin:50% 50%;animation:pop 1.2s var(--ease) infinite}
+.a-pop{transform-box:fill-box;transform-origin:50% 50%;animation:pop 1.2s cubic-bezier(.22,1,.36,1) infinite}
 @keyframes pop{0%,62%{transform:scale(.5) rotate(-14deg);opacity:0}72%{transform:scale(1.18) rotate(-8deg);opacity:1}82%,100%{transform:scale(1) rotate(-8deg);opacity:1}}
 .a-px{animation:pxbob 1.2s steps(3,jump-none) infinite alternate}
 @keyframes pxbob{from{transform:translateY(0)}to{transform:translateY(-12px)}}
 .a-pxc{animation:pxc 4s steps(6,jump-none) infinite alternate}
 @keyframes pxc{from{transform:translateX(0)}to{transform:translateX(36px)}}
-.kt-a{animation:kta 4.8s var(--ease) infinite}
+.kt-a{animation:kta 4.8s cubic-bezier(.22,1,.36,1) infinite}
 @keyframes kta{0%{transform:translateY(70px);opacity:0}10%,42%{transform:translateY(0);opacity:1}50%,100%{transform:translateY(-70px);opacity:0}}
-.kt-b{transform-box:fill-box;transform-origin:50% 50%;animation:ktb 4.8s var(--ease) infinite}
+.kt-b{transform-box:fill-box;transform-origin:50% 50%;animation:ktb 4.8s cubic-bezier(.22,1,.36,1) infinite}
 @keyframes ktb{0%,48%{transform:scale(1.7);opacity:0}58%,92%{transform:scale(1);opacity:1}100%{transform:scale(.92);opacity:0}}
-.n-draw{stroke-dasharray:1;animation:ndraw 4.5s var(--ease) infinite}
+.n-draw{stroke-dasharray:1;animation:ndraw 4.5s cubic-bezier(.22,1,.36,1) infinite}
 @keyframes ndraw{0%{stroke-dashoffset:1}45%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-1}}
 .n-scan{animation:scan 3s linear infinite}
 @keyframes scan{from{transform:translateY(0)}to{transform:translateY(176px)}}
@@ -189,10 +173,10 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px 
 @keyframes soft2{from{transform:translateY(-6px)}to{transform:translateY(4px)}}
 .a-shadow{transform-box:fill-box;transform-origin:50% 50%;animation:shadow 5s ease-in-out infinite alternate}
 @keyframes shadow{from{transform:scale(1);opacity:.24}to{transform:scale(.78);opacity:.12}}
-.ui-cur{animation:uicur 4s var(--ease) infinite}
+.ui-cur{animation:uicur 4s cubic-bezier(.22,1,.36,1) infinite}
 @keyframes uicur{0%{transform:translate(292px,176px)}38%,46%{transform:translate(206px,128px) scale(1)}50%{transform:translate(206px,128px) scale(.84)}55%,82%{transform:translate(206px,128px) scale(1)}100%{transform:translate(292px,176px)}}
 .ui-btn{animation:uibtn 4s infinite}
-@keyframes uibtn{0%,48%{fill:#0A0A0A}52%,90%{fill:#FF4C00}100%{fill:#0A0A0A}}
+@keyframes uibtn{0%,48%{fill:#1B1840}52%,90%{fill:#433AE8}100%{fill:#1B1840}}
 .ui-t1{animation:uit1 4s infinite}
 @keyframes uit1{0%,48%{opacity:1}52%,90%{opacity:0}100%{opacity:1}}
 .ui-t2{animation:uit2 4s infinite}
@@ -202,7 +186,7 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px 
 .ui-chk{animation:uichk 4s infinite}
 .ui-chk:nth-of-type(2){animation-delay:.18s}
 .ui-chk:nth-of-type(3){animation-delay:.36s}
-@keyframes uichk{0%,54%{fill:#E3E7EE}60%,90%{fill:#FF4C00}100%{fill:#E3E7EE}}
+@keyframes uichk{0%,54%{fill:#E3E7EE}60%,90%{fill:#433AE8}100%{fill:#E3E7EE}}
 .eq rect{transform-box:fill-box;transform-origin:50% 100%;animation:eq 1.1s ease-in-out infinite alternate}
 .eq rect:nth-child(2){animation-delay:-.3s}.eq rect:nth-child(3){animation-delay:-.6s}.eq rect:nth-child(4){animation-delay:-.15s}.eq rect:nth-child(5){animation-delay:-.45s}
 @keyframes eq{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
@@ -210,18 +194,18 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px 
 @keyframes slide{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
 .par{animation:par 5s ease-in-out infinite alternate}
 @keyframes par{from{transform:translateX(calc(var(--a) * -1px))}to{transform:translateX(calc(var(--a) * 1px))}}
-.pv-3d{display:grid;place-items:center;background:#F2F2F2}
+.pv-3d{display:grid;place-items:center;background:#EDF3FE}
 .scene{perspective:520px;display:grid;place-items:center;gap:22px}
 .cube{width:68px;height:68px;position:relative;transform-style:preserve-3d;animation:spin 7s linear infinite}
-.cube span{position:absolute;inset:0}
-.cube .f1{background:#FF4C00;transform:translateZ(34px)}
-.cube .f2{background:#C73B00;transform:rotateY(90deg) translateZ(34px)}
-.cube .f3{background:#0A0A0A;transform:rotateY(180deg) translateZ(34px)}
-.cube .f4{background:#E54400;transform:rotateY(-90deg) translateZ(34px)}
-.cube .f5{background:#FF7A3D;transform:rotateX(90deg) translateZ(34px)}
-.cube .f6{background:#7A2400;transform:rotateX(-90deg) translateZ(34px)}
-.floor{width:110px;height:14px;border-radius:50%;background:radial-gradient(closest-side,rgba(10,10,10,.28),rgba(10,10,10,0))}
-.orb{position:absolute;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFFFFF,#BDBDBD 55%,#6B6B6B);right:20%;top:24%;animation:soft2 4s ease-in-out infinite alternate}
+.cube span{position:absolute;inset:0;border-radius:6px}
+.cube .f1{background:#433AE8;transform:translateZ(34px)}
+.cube .f2{background:#2D24C4;transform:rotateY(90deg) translateZ(34px)}
+.cube .f3{background:#1B1840;transform:rotateY(180deg) translateZ(34px)}
+.cube .f4{background:#3A31D6;transform:rotateY(-90deg) translateZ(34px)}
+.cube .f5{background:#7A73F0;transform:rotateX(90deg) translateZ(34px)}
+.cube .f6{background:#211A9C;transform:rotateX(-90deg) translateZ(34px)}
+.floor{width:110px;height:14px;border-radius:50%;background:radial-gradient(closest-side,rgba(27,24,64,.28),rgba(27,24,64,0))}
+.orb{position:absolute;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFFFFF,#FFDAFA 55%,#E53962);right:20%;top:24%;animation:soft2 4s ease-in-out infinite alternate}
 @keyframes spin{from{transform:rotateX(-22deg) rotateY(0)}to{transform:rotateX(-22deg) rotateY(360deg)}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
@@ -262,7 +246,7 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px 
       <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#1B2440" flood-opacity=".16"/>
     </filter>
     <filter id="layer" x="-10%" y="-10%" width="130%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0A0A0A" flood-opacity=".18"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#1B1840" flood-opacity=".16"/>
     </filter>
     <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.7" fill="#0A0A0A" opacity=".2"/></pattern>
     <pattern id="ngrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 H0 V20" fill="none" stroke="#22D3EE" stroke-width=".5" opacity=".18"/></pattern>
@@ -275,492 +259,405 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px 
   </defs>
 </svg>
 
-<nav class="nav" aria-label="Secțiuni">
-  <a class="mark" href="#top">NOVA</a>
-  <ul>
-    <li><a href="#skill">01 Skill</a></li>
-    <li><a href="#stil">02 Stil</a></li>
-    <li><a href="#exemple">03 Exemple</a></li>
-    <li><a href="#3d">04 Imagini & 3D</a></li>
-  </ul>
-</nav>
+<main class="deck">
 
-<!-- HERO -->
-<header class="band light hero" id="top">
-  <div class="wrap">
-    <div class="head">
-      <div class="kicker">Ghid · <b>Lecția Motion graphics cu Claude</b></div>
-      <h1>Motion graphics cu <em>Claude</em></h1>
-      <p class="lead">Tot ce folosim în lecție, într-un singur loc: skill-ul, 9 stiluri cu prompturi gata de copiat, cele 3 adâncimi, exemple de urmat și surse gratuite de modele 3D.</p>
-    </div>
-    <div>
-      <svg class="city" viewBox="0 0 600 236" role="img" aria-label="O minge portocalie sare de pe un acoperiș pe altul și colorează orașul gri.">
-        <g id="city-b"></g>
-        <line x1="0" y1="220.5" x2="600" y2="220.5" stroke="#0A0A0A" stroke-width="1"/>
-        <g id="ball-x" transform="translate(52 118)"><g id="ball-y"><circle r="12" fill="#FF4C00"/></g></g>
-      </svg>
-      <div class="city-cap kicker"><span>Etapa 1 · O minge redă culorile orașului</span><span>20 s · HTML / CSS / JS</span></div>
-    </div>
-    <div class="stats">
-      <div class="stat"><strong>4</strong><span class="kicker">etape</span></div>
-      <div class="stat"><strong>9</strong><span class="kicker">stiluri</span></div>
-      <div class="stat"><strong>3</strong><span class="kicker">adâncimi</span></div>
-      <div class="stat"><strong>0 $</strong><span class="kicker">resurse</span></div>
-    </div>
+<!-- COVER -->
+<header class="panel cover grid-bg" id="top">
+  <div>
+    <svg class="lg" role="img" aria-label="Nova Sapiens" xmlns="http://www.w3.org/2000/svg" viewBox="93.10 187.30 410.10 74.50"><path fill="currentColor" fill-rule="nonzero" d="M198.58 235.48L181.21 210.47L176.47 210.47L176.47 247.33L182.52 247.33L182.52 222.32L199.90 247.33L204.64 247.33L204.64 210.47L198.58 210.47L198.58 235.48M223.69 248.01C227.59 248.01 230.85 246.70 233.53 244.01C236.22 241.33 237.59 238.06 237.59 234.17C237.59 230.27 236.22 227.01 233.53 224.32C230.85 221.63 227.59 220.32 223.69 220.32C219.84 220.32 216.53 221.63 213.84 224.32C211.16 227.01 209.79 230.27 209.79 234.17C209.79 238.06 211.16 241.33 213.84 244.01C216.53 246.70 219.84 248.01 223.69 248.01M217.84 240.12C216.26 238.54 215.48 236.54 215.48 234.17C215.48 231.80 216.26 229.80 217.84 228.22C219.42 226.64 221.37 225.85 223.69 225.85C226.01 225.85 227.95 226.64 229.53 228.22C231.11 229.80 231.90 231.80 231.90 234.17C231.90 236.54 231.11 238.54 229.53 240.12C227.95 241.70 226.01 242.49 223.69 242.49C221.37 242.49 219.42 241.70 217.84 240.12M251.85 241.01L244.48 221.00L238.27 221.00L248.53 247.33L255.11 247.33L265.38 221.00L259.17 221.00L251.85 241.01M288.38 224.74C286.22 221.79 283.17 220.32 279.17 220.32C275.53 220.32 272.48 221.63 269.90 224.32C267.32 227.01 266.06 230.27 266.06 234.17C266.06 238.01 267.32 241.33 269.90 244.01C272.48 246.70 275.53 248.01 279.17 248.01C283.17 248.01 286.22 246.54 288.38 243.54L288.38 247.33L294.07 247.33L294.07 221.00L288.38 221.00L288.38 224.74M274.11 240.22C272.53 238.59 271.74 236.59 271.74 234.17C271.74 231.74 272.53 229.74 274.11 228.16C275.69 226.53 277.69 225.74 280.06 225.74C282.43 225.74 284.43 226.53 286.01 228.16C287.59 229.74 288.38 231.74 288.38 234.17C288.38 236.59 287.59 238.59 286.01 240.22C284.43 241.80 282.43 242.59 280.06 242.59C277.69 242.59 275.69 241.80 274.11 240.22M326.12 248.01C330.02 248.01 333.18 247.07 335.55 245.12C337.97 243.17 339.18 240.48 339.18 237.17C339.45 233.64 337.34 231.11 335.39 229.59C334.81 229.11 333.92 228.59 332.71 228.11C331.55 227.64 330.65 227.27 329.97 227.06C329.34 226.79 328.34 226.48 326.91 226.01C321.28 224.27 319.49 223.00 319.49 220.27C319.49 217.48 321.76 215.69 325.28 215.69C328.92 215.69 331.49 217.42 333.02 220.85L338.13 217.90C335.76 212.84 331.18 209.79 325.28 209.79C322.02 209.79 319.23 210.74 316.91 212.69C314.59 214.58 313.44 217.16 313.44 220.42C313.44 223.74 314.65 226.16 317.02 227.85C319.49 229.48 321.23 230.16 324.76 231.22C327.86 232.17 330.07 233.06 331.28 233.85C332.50 234.64 333.13 235.75 333.13 237.27C333.13 240.17 330.86 242.12 326.28 242.12C321.65 242.12 318.60 240.06 317.12 235.90L311.91 238.96C313.86 244.59 319.02 248.01 326.12 248.01M365.24 224.74C363.08 221.79 360.02 220.32 356.02 220.32C352.39 220.32 349.34 221.63 346.76 224.32C344.18 227.01 342.91 230.27 342.91 234.17C342.91 238.01 344.18 241.33 346.76 244.01C349.34 246.70 352.39 248.01 356.02 248.01C360.02 248.01 363.08 246.54 365.24 243.54L365.24 247.33L370.92 247.33L370.92 221.00L365.24 221.00L365.24 224.74M350.97 240.22C349.39 238.59 348.60 236.59 348.60 234.17C348.60 231.74 349.39 229.74 350.97 228.16C352.55 226.53 354.55 225.74 356.92 225.74C359.29 225.74 361.29 226.53 362.87 228.16C364.45 229.74 365.24 231.74 365.24 234.17C365.24 236.59 364.45 238.59 362.87 240.22C361.29 241.80 359.29 242.59 356.92 242.59C354.55 242.59 352.55 241.80 350.97 240.22M392.08 220.32C388.08 220.32 385.03 221.79 382.87 224.79L382.87 221.00L377.18 221.00L377.18 257.86L382.87 257.86L382.87 243.59C385.03 246.54 388.08 248.01 392.08 248.01C395.71 248.01 398.77 246.70 401.35 244.01C403.93 241.33 405.19 238.06 405.19 234.17C405.19 230.32 403.93 227.06 401.35 224.37C398.77 221.69 395.71 220.32 392.08 220.32M385.24 240.22C383.66 238.59 382.87 236.59 382.87 234.17C382.87 231.74 383.66 229.74 385.24 228.16C386.82 226.53 388.82 225.74 391.19 225.74C393.56 225.74 395.56 226.53 397.14 228.16C398.72 229.74 399.51 231.74 399.51 234.17C399.51 236.59 398.72 238.59 397.14 240.22C395.56 241.80 393.56 242.59 391.19 242.59C388.82 242.59 386.82 241.80 385.24 240.22M415.35 216.00C416.82 214.53 416.82 212.32 415.40 210.90C413.98 209.42 411.66 209.42 410.24 210.90C408.82 212.32 408.82 214.53 410.24 216.00C411.71 217.42 413.92 217.42 415.35 216.00M415.66 247.33L415.66 221.00L409.98 221.00L409.98 247.33L415.66 247.33M447.30 236.59C447.46 235.59 447.51 234.80 447.51 234.22C447.51 230.38 446.24 227.06 443.77 224.37C441.30 221.69 438.14 220.32 434.29 220.32C430.24 220.32 426.87 221.63 424.29 224.32C421.71 226.95 420.39 230.22 420.39 234.17C420.39 238.17 421.71 241.48 424.34 244.12C426.97 246.70 430.45 248.01 434.71 248.01C439.82 248.01 443.66 246.12 446.24 242.27L441.56 239.54C440.03 241.70 437.77 242.80 434.77 242.80C430.40 242.80 427.19 240.59 426.34 236.59L447.30 236.59M426.29 231.96C427.08 227.95 430.03 225.48 434.24 225.48C437.98 225.48 440.98 227.69 441.77 231.96L426.29 231.96M465.98 220.32C462.24 220.32 459.56 221.69 457.82 224.37L457.82 221.00L452.13 221.00L452.13 247.33L457.82 247.33L457.82 233.22C457.82 228.11 460.51 225.64 464.51 225.64C468.14 225.64 470.40 227.80 470.40 231.74L470.40 247.33L476.09 247.33L476.09 231.17C476.09 224.43 472.04 220.32 465.98 220.32M486.93 228.27C486.93 226.43 488.61 225.48 490.77 225.48C493.14 225.48 494.83 226.48 495.72 228.48L500.51 225.80C498.67 222.37 495.14 220.32 490.77 220.32C488.03 220.32 485.72 221.06 483.87 222.53C482.03 224.00 481.14 225.95 481.14 228.37C481.03 233.90 486.35 235.48 490.30 236.48C493.09 237.17 495.30 238.17 495.30 239.85C495.30 241.80 493.83 242.80 490.82 242.80C487.82 242.80 485.88 241.54 484.98 239.01L480.08 241.85C481.77 245.70 485.61 248.01 490.82 248.01C493.77 248.01 496.20 247.28 498.14 245.85C500.09 244.43 501.09 242.43 501.09 239.91C501.20 234.27 495.93 232.59 491.88 231.69C489.14 230.90 486.93 230.01 486.93 228.27"/><path fill="currentColor" fill-rule="evenodd" d="M104.74 194.83C110.04 194.83 114.38 199.17 114.38 204.47L114.38 229.17C114.38 230.39 115.00 231.72 116.01 232.42L130.89 242.68L137.58 247.29C139.56 248.65 142.29 248.15 143.65 246.18C145.01 244.20 144.51 241.47 142.54 240.11L126.54 229.08C125.92 228.59 125.51 227.83 125.51 226.97L125.51 192.64C125.51 190.30 127.98 189.26 129.93 190.58L148.29 203.23C149.54 204.09 150.20 205.49 150.17 206.91L150.18 244.97C150.18 248.48 148.26 251.56 145.43 253.24C141.13 255.78 137.09 254.23 133.74 251.77L109.31 234.93C107.39 233.60 104.64 234.01 103.24 236.04C101.54 237.74 102.38 240.75 104.35 242.11L121.88 254.17C123.18 255.06 123.51 256.87 122.61 258.17L122.61 258.17C121.71 259.47 119.91 259.80 118.61 258.90L99.39 245.65C96.70 243.74 95.09 240.98 95.09 237.64L95.09 204.47C95.09 199.17 99.43 194.83 104.74 194.83"/></svg>
+    <p class="eyebrow">Nova Sapiens · Ghidul lecției</p>
+    <h1>Motion graphics cu Claude</h1>
+    <p class="sub">Tot ce folosim în lecție, într-un singur loc: skill-ul, 9 stiluri cu <b>prompturi gata de copiat</b>, cele 3 adâncimi, exemple de urmat și surse gratuite de modele 3D.</p>
+    <div class="pills"><span class="pill">4 etape</span><span class="pill">9 stiluri</span><span class="pill">3 adâncimi</span><span class="pill">Prompturi de copiat</span></div>
+  </div>
+  <div class="cover-card">
+    <svg class="city" viewBox="0 0 600 236" role="img" aria-label="O minge sare de pe un acoperiș pe altul și colorează orașul gri.">
+      <g id="city-b"></g>
+      <line x1="0" y1="220.5" x2="600" y2="220.5" stroke="#1B1840" stroke-width="1.5"/>
+      <g id="ball-x" transform="translate(52 118)"><g id="ball-y"><circle r="12" fill="#433AE8"/></g></g>
+    </svg>
+    <div class="cap"><span>Etapa 1 · O minge redă culorile orașului</span><span>20 s · HTML / CSS / JS</span></div>
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="track">
-    <span>Storyboard</span><span>Cameră</span><span>Blur de mișcare</span><span>Sunet</span><span>Stil</span><span>Adâncime</span><span>Referință</span><span>3D</span>
-    <span>Storyboard</span><span>Cameră</span><span>Blur de mișcare</span><span>Sunet</span><span>Stil</span><span>Adâncime</span><span>Referință</span><span>3D</span>
+<nav class="panel nav" aria-label="Secțiuni" style="padding:16px 22px">
+  <svg class="lg" role="img" aria-label="Nova Sapiens" xmlns="http://www.w3.org/2000/svg" viewBox="93.10 187.30 410.10 74.50"><path fill="currentColor" fill-rule="nonzero" d="M198.58 235.48L181.21 210.47L176.47 210.47L176.47 247.33L182.52 247.33L182.52 222.32L199.90 247.33L204.64 247.33L204.64 210.47L198.58 210.47L198.58 235.48M223.69 248.01C227.59 248.01 230.85 246.70 233.53 244.01C236.22 241.33 237.59 238.06 237.59 234.17C237.59 230.27 236.22 227.01 233.53 224.32C230.85 221.63 227.59 220.32 223.69 220.32C219.84 220.32 216.53 221.63 213.84 224.32C211.16 227.01 209.79 230.27 209.79 234.17C209.79 238.06 211.16 241.33 213.84 244.01C216.53 246.70 219.84 248.01 223.69 248.01M217.84 240.12C216.26 238.54 215.48 236.54 215.48 234.17C215.48 231.80 216.26 229.80 217.84 228.22C219.42 226.64 221.37 225.85 223.69 225.85C226.01 225.85 227.95 226.64 229.53 228.22C231.11 229.80 231.90 231.80 231.90 234.17C231.90 236.54 231.11 238.54 229.53 240.12C227.95 241.70 226.01 242.49 223.69 242.49C221.37 242.49 219.42 241.70 217.84 240.12M251.85 241.01L244.48 221.00L238.27 221.00L248.53 247.33L255.11 247.33L265.38 221.00L259.17 221.00L251.85 241.01M288.38 224.74C286.22 221.79 283.17 220.32 279.17 220.32C275.53 220.32 272.48 221.63 269.90 224.32C267.32 227.01 266.06 230.27 266.06 234.17C266.06 238.01 267.32 241.33 269.90 244.01C272.48 246.70 275.53 248.01 279.17 248.01C283.17 248.01 286.22 246.54 288.38 243.54L288.38 247.33L294.07 247.33L294.07 221.00L288.38 221.00L288.38 224.74M274.11 240.22C272.53 238.59 271.74 236.59 271.74 234.17C271.74 231.74 272.53 229.74 274.11 228.16C275.69 226.53 277.69 225.74 280.06 225.74C282.43 225.74 284.43 226.53 286.01 228.16C287.59 229.74 288.38 231.74 288.38 234.17C288.38 236.59 287.59 238.59 286.01 240.22C284.43 241.80 282.43 242.59 280.06 242.59C277.69 242.59 275.69 241.80 274.11 240.22M326.12 248.01C330.02 248.01 333.18 247.07 335.55 245.12C337.97 243.17 339.18 240.48 339.18 237.17C339.45 233.64 337.34 231.11 335.39 229.59C334.81 229.11 333.92 228.59 332.71 228.11C331.55 227.64 330.65 227.27 329.97 227.06C329.34 226.79 328.34 226.48 326.91 226.01C321.28 224.27 319.49 223.00 319.49 220.27C319.49 217.48 321.76 215.69 325.28 215.69C328.92 215.69 331.49 217.42 333.02 220.85L338.13 217.90C335.76 212.84 331.18 209.79 325.28 209.79C322.02 209.79 319.23 210.74 316.91 212.69C314.59 214.58 313.44 217.16 313.44 220.42C313.44 223.74 314.65 226.16 317.02 227.85C319.49 229.48 321.23 230.16 324.76 231.22C327.86 232.17 330.07 233.06 331.28 233.85C332.50 234.64 333.13 235.75 333.13 237.27C333.13 240.17 330.86 242.12 326.28 242.12C321.65 242.12 318.60 240.06 317.12 235.90L311.91 238.96C313.86 244.59 319.02 248.01 326.12 248.01M365.24 224.74C363.08 221.79 360.02 220.32 356.02 220.32C352.39 220.32 349.34 221.63 346.76 224.32C344.18 227.01 342.91 230.27 342.91 234.17C342.91 238.01 344.18 241.33 346.76 244.01C349.34 246.70 352.39 248.01 356.02 248.01C360.02 248.01 363.08 246.54 365.24 243.54L365.24 247.33L370.92 247.33L370.92 221.00L365.24 221.00L365.24 224.74M350.97 240.22C349.39 238.59 348.60 236.59 348.60 234.17C348.60 231.74 349.39 229.74 350.97 228.16C352.55 226.53 354.55 225.74 356.92 225.74C359.29 225.74 361.29 226.53 362.87 228.16C364.45 229.74 365.24 231.74 365.24 234.17C365.24 236.59 364.45 238.59 362.87 240.22C361.29 241.80 359.29 242.59 356.92 242.59C354.55 242.59 352.55 241.80 350.97 240.22M392.08 220.32C388.08 220.32 385.03 221.79 382.87 224.79L382.87 221.00L377.18 221.00L377.18 257.86L382.87 257.86L382.87 243.59C385.03 246.54 388.08 248.01 392.08 248.01C395.71 248.01 398.77 246.70 401.35 244.01C403.93 241.33 405.19 238.06 405.19 234.17C405.19 230.32 403.93 227.06 401.35 224.37C398.77 221.69 395.71 220.32 392.08 220.32M385.24 240.22C383.66 238.59 382.87 236.59 382.87 234.17C382.87 231.74 383.66 229.74 385.24 228.16C386.82 226.53 388.82 225.74 391.19 225.74C393.56 225.74 395.56 226.53 397.14 228.16C398.72 229.74 399.51 231.74 399.51 234.17C399.51 236.59 398.72 238.59 397.14 240.22C395.56 241.80 393.56 242.59 391.19 242.59C388.82 242.59 386.82 241.80 385.24 240.22M415.35 216.00C416.82 214.53 416.82 212.32 415.40 210.90C413.98 209.42 411.66 209.42 410.24 210.90C408.82 212.32 408.82 214.53 410.24 216.00C411.71 217.42 413.92 217.42 415.35 216.00M415.66 247.33L415.66 221.00L409.98 221.00L409.98 247.33L415.66 247.33M447.30 236.59C447.46 235.59 447.51 234.80 447.51 234.22C447.51 230.38 446.24 227.06 443.77 224.37C441.30 221.69 438.14 220.32 434.29 220.32C430.24 220.32 426.87 221.63 424.29 224.32C421.71 226.95 420.39 230.22 420.39 234.17C420.39 238.17 421.71 241.48 424.34 244.12C426.97 246.70 430.45 248.01 434.71 248.01C439.82 248.01 443.66 246.12 446.24 242.27L441.56 239.54C440.03 241.70 437.77 242.80 434.77 242.80C430.40 242.80 427.19 240.59 426.34 236.59L447.30 236.59M426.29 231.96C427.08 227.95 430.03 225.48 434.24 225.48C437.98 225.48 440.98 227.69 441.77 231.96L426.29 231.96M465.98 220.32C462.24 220.32 459.56 221.69 457.82 224.37L457.82 221.00L452.13 221.00L452.13 247.33L457.82 247.33L457.82 233.22C457.82 228.11 460.51 225.64 464.51 225.64C468.14 225.64 470.40 227.80 470.40 231.74L470.40 247.33L476.09 247.33L476.09 231.17C476.09 224.43 472.04 220.32 465.98 220.32M486.93 228.27C486.93 226.43 488.61 225.48 490.77 225.48C493.14 225.48 494.83 226.48 495.72 228.48L500.51 225.80C498.67 222.37 495.14 220.32 490.77 220.32C488.03 220.32 485.72 221.06 483.87 222.53C482.03 224.00 481.14 225.95 481.14 228.37C481.03 233.90 486.35 235.48 490.30 236.48C493.09 237.17 495.30 238.17 495.30 239.85C495.30 241.80 493.83 242.80 490.82 242.80C487.82 242.80 485.88 241.54 484.98 239.01L480.08 241.85C481.77 245.70 485.61 248.01 490.82 248.01C493.77 248.01 496.20 247.28 498.14 245.85C500.09 244.43 501.09 242.43 501.09 239.91C501.20 234.27 495.93 232.59 491.88 231.69C489.14 230.90 486.93 230.01 486.93 228.27"/><path fill="currentColor" fill-rule="evenodd" d="M104.74 194.83C110.04 194.83 114.38 199.17 114.38 204.47L114.38 229.17C114.38 230.39 115.00 231.72 116.01 232.42L130.89 242.68L137.58 247.29C139.56 248.65 142.29 248.15 143.65 246.18C145.01 244.20 144.51 241.47 142.54 240.11L126.54 229.08C125.92 228.59 125.51 227.83 125.51 226.97L125.51 192.64C125.51 190.30 127.98 189.26 129.93 190.58L148.29 203.23C149.54 204.09 150.20 205.49 150.17 206.91L150.18 244.97C150.18 248.48 148.26 251.56 145.43 253.24C141.13 255.78 137.09 254.23 133.74 251.77L109.31 234.93C107.39 233.60 104.64 234.01 103.24 236.04C101.54 237.74 102.38 240.75 104.35 242.11L121.88 254.17C123.18 255.06 123.51 256.87 122.61 258.17L122.61 258.17C121.71 259.47 119.91 259.80 118.61 258.90L99.39 245.65C96.70 243.74 95.09 240.98 95.09 237.64L95.09 204.47C95.09 199.17 99.43 194.83 104.74 194.83"/></svg>
+  <ul>
+    <li><a href="#skill">1 · Skill</a></li>
+    <li><a href="#stil">2 · Stil</a></li>
+    <li><a href="#exemple">3 · Exemple</a></li>
+    <li><a href="#3d">4 · Imagini și 3D</a></li>
+  </ul>
+</nav>
+
+<!-- 1 SKILL -->
+<section class="panel grid-bg" id="skill">
+  <div class="hd"><span class="chip t0">Etapa 1 · Skill-ul</span><span class="chip">1 / 4</span></div>
+  <div class="head">
+    <h2>Un skill care regizează</h2>
+    <p class="lead">motion-director lucrează ca un regizor. Face <b>storyboard-ul</b>, animă cu cameră, blur de mișcare și sunet, apoi își verifică singur rezultatul înainte să ți-l dea.</p>
   </div>
-</div>
 
-<!-- 01 SKILL -->
-<section class="band dark" id="skill">
-  <div class="wrap">
-    <div class="skill">
-      <div class="head">
-        <div class="kicker"><b>01 / 04</b> · Skill-ul master</div>
-        <h2>Un skill care <em>regizează</em>.</h2>
-        <p class="lead">motion-director lucrează ca un regizor. Face storyboard-ul, animă cu cameră, blur de mișcare și sunet, apoi își verifică singur rezultatul înainte să ți-l dea.</p>
-      </div>
-      <div class="skill-card">
-        <div class="top">
-          <span class="name">motion-director</span>
-          <span class="kicker">v1.9.0 · zip · 42 KB</span>
-        </div>
-        <div class="act">
-          <a class="btn solid" id="dl" href="#skill">Descarcă skill-ul ↓</a>
-          <span class="kicker" id="dl-note">Linkul de descărcare se adaugă în curând</span>
-        </div>
-        <div class="install">
-          <div><span class="kicker">Claude Code</span><p>Dezarhivează în <code>~/.claude/skills/</code> (pe Windows <code>C:\Users\nume\.claude\skills\</code>), repornește Claude Code și scrie <code>/motion-director</code> ca să verifici.</p></div>
-          <div><span class="kicker">Aplicația Claude</span><p>Customize → Skills → + → Upload a skill, apoi alegi arhiva.</p></div>
-        </div>
-      </div>
+  <div class="two">
+    <div class="card skill-card">
+      <div class="meta"><span class="tag">Skill</span><span class="tag t1">v1.9.0</span><span class="tag t2">zip · 42 KB</span></div>
+      <div class="name">motion-director</div>
+      <a class="btn" id="dl" href="#skill">Descarcă skill-ul ↓</a>
+      <span class="muted" id="dl-note" style="font-size:14.5px">Linkul de descărcare se adaugă în curând.</span>
     </div>
-
-    <div class="cells">
-      <div class="cell"><span class="num">01</span><h3>Calitate din prima</h3><p class="muted">Text, blur de mișcare, cameră și sunet lucrate fără să le ceri. Camera se mișcă tot timpul cât curge povestea.</p></div>
-      <div class="cell"><span class="num">02</span><h3>Întâi ideea</h3><p class="muted">Pentru fiecare scenă alege din 3–5 variante și scrie storyboard-ul înainte de cod. Riscul mare îl testează pe o probă scurtă.</p></div>
-      <div class="cell"><span class="num">03</span><h3>Verificat, nu doar generat</h3><p class="muted">Prima versiune e o ciornă. O privește cadru cu cadru, o repară și îți dă un tabel PASS/FAIL cu ce a verificat.</p></div>
+    <div class="card steps">
+      <div class="step"><div class="n">1</div><div><h4>Claude Code</h4><p>Dezarhivează în <code>~/.claude/skills/</code> (pe Windows <code>C:\Users\nume\.claude\skills\</code>).</p></div></div>
+      <div class="step"><div class="n">2</div><div><h4>Repornește</h4><p>Închide și redeschide Claude Code, apoi scrie <code>/motion-director</code> ca să verifici.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h4>Aplicația Claude</h4><p>Customize → Skills → + → Upload a skill, apoi alegi arhiva.</p></div></div>
     </div>
+  </div>
 
-    <div class="sub">
-      <div class="kicker">Testul din etapa 1 · același prompt, fără și cu skill</div>
-      <div class="pair">
-        <div class="prompt">
-          <header><span class="kicker">Fără skill</span><button class="btn copy" type="button" data-copy="p-ball">Copiază</button></header>
-          <pre id="p-ball"><span class="t">Mingea redă culorile orașului</span>
+  <div class="three">
+    <div class="card"><div class="big-n">01</div><h3 style="margin:10px 0 6px">Calitate din prima</h3><p class="muted">Text, blur de mișcare, cameră și sunet lucrate fără să le ceri. Camera se mișcă tot timpul cât curge povestea.</p></div>
+    <div class="card"><div class="big-n">02</div><h3 style="margin:10px 0 6px">Întâi ideea</h3><p class="muted">Pentru fiecare scenă alege din 3–5 variante și scrie storyboard-ul înainte de cod. Lucrează pe ciorne rapide.</p></div>
+    <div class="card"><div class="big-n">03</div><h3 style="margin:10px 0 6px">Verificat, nu doar generat</h3><p class="muted">Prima versiune e o ciornă. O privește cadru cu cadru, o repară și îți dă un tabel PASS/FAIL.</p></div>
+  </div>
+
+  <div style="display:grid;gap:12px">
+    <span class="sub-title">Testul din etapa 1 · același prompt, fără și cu skill</span>
+    <div class="two">
+      <div class="prompt">
+        <div class="top"><span class="lbl">Fără skill</span><button class="copy" type="button" data-copy="p-ball">Copiază</button></div>
+        <pre id="p-ball"><span class="t">Mingea redă culorile orașului</span>
 Creează o animație HTML/CSS/JS de 20 de secunde: o minge elastică sare peste un obstacol și redă culorile unui oraș gri. Inventează o mică poveste cu un final frumos.</pre>
-        </div>
-        <div class="prompt">
-          <header><span class="kicker">Cu skill</span><button class="btn copy" type="button" data-copy="p-ball-skill">Copiază</button></header>
-          <pre id="p-ball-skill"><span class="t">Mingea redă culorile orașului</span>
+      </div>
+      <div class="prompt">
+        <div class="top"><span class="lbl">Cu skill</span><button class="copy" type="button" data-copy="p-ball-skill">Copiază</button></div>
+        <pre id="p-ball-skill"><span class="t">Mingea redă culorile orașului</span>
 Studiază și aplică skill-ul meu: motion-director.
 Creează o animație HTML/CSS/JS de 20 de secunde: o minge elastică sare peste un obstacol și redă culorile unui oraș gri. Inventează o mică poveste cu un final frumos.</pre>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 02 STYLE -->
-<section class="band light" id="stil">
-  <div class="wrap">
-    <div class="head">
-      <div class="kicker"><b>02 / 04</b> · Stilul</div>
-      <h2>Alege <em>stilul</em>. Apoi adâncimea.</h2>
-      <p class="lead">Copiază descrierea stilului și adaug-o la promptul tău. Skill-ul îți arată același meniu și te întreabă înainte să înceapă.</p>
-    </div>
+<!-- 2 STYLE -->
+<section class="panel grid-bg" id="stil" style="background-color:#FFF9E3">
+  <div class="hd"><span class="chip t2">Etapa 2 · Stilul</span><span class="chip">2 / 4</span></div>
+  <div class="head">
+    <h2>Alege stilul. Apoi adâncimea.</h2>
+    <p class="lead">Copiază descrierea stilului și adaug-o la promptul tău. Skill-ul îți arată <b>același meniu</b> și te întreabă înainte să înceapă.</p>
+  </div>
 
-    <div class="grid3">
-      <!-- 1 hand-drawn -->
-      <article class="card">
+  <div class="styles">
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="#F5F1E8"/>
+        <g filter="url(#boil)" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <g class="a-float"><use href="#env"/><use href="#env" transform="translate(1.8 1.2)" opacity=".45"/><use href="#stripes"/><use href="#ropes"/><use href="#basket"/></g>
+          <path d="M34 62 q10 -14 24 -6 q8 -12 22 -2 q14 0 12 12 h-58 z"/>
+          <path d="M232 138 q12 -16 26 -8 q10 -10 22 0 q12 2 10 12 h-58 z"/>
+          <path d="M0 166 C60 152 120 172 180 160 S 290 150 320 162"/>
+        </g>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 1 / 9</span><h3>Desenat de mână</h3>
+        <p class="ptext" id="s1">Stil: desen în tuș pe hârtie deschisă. Contururi vii, neuniforme, pe alocuri linie dublă și mici întreruperi; fără umpluturi și fără hașuri. Liniile se desenează pe traseul peniței; contururile „fierb” ușor, redesenate de 8–12 ori pe secundă; mișcarea e moale și reținută.</p>
+        <button class="copy" type="button" data-copy="s1">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="#EADBC2"/><rect width="320" height="180" filter="url(#grain)"/>
+        <g filter="url(#paper)">
+          <circle cx="256" cy="46" r="20" fill="#F3C43B"/>
+          <g class="a-stepx"><path d="M26 70 q10 -14 24 -6 q8 -12 22 -2 q14 0 12 12 h-58 z" fill="#FFFDF7"/></g>
+          <path d="M0 150 C50 118 110 128 170 146 S 280 124 320 136 V180 H0 Z" fill="#8DB86B"/>
+          <g class="a-step"><use href="#env" fill="#E4572E"/><use href="#stripe-fill" fill="#F3C43B"/><use href="#ropes" stroke="#5A3A1A" stroke-width="2" fill="none"/><use href="#basket" fill="#8B5E34"/></g>
+          <path d="M0 168 C70 150 150 176 220 162 S 300 160 320 166 V180 H0 Z" fill="#4F772D"/>
+        </g>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 2 / 9</span><h3>Colaj de hârtie</h3>
+        <p class="ptext" id="s2">Stil: colaj de hârtie. Forme decupate din hârtie colorată, cu margine neuniformă și textură vizibilă; fiecare strat aruncă o umbră moale pe cel de dedesubt. Mișcă elementele strat cu strat, ca niște decupaje pe masă: deplasări și rotiri cu un ușor efect stop-motion; adâncimea vine din parallaxul straturilor.</p>
+        <button class="copy" type="button" data-copy="s2">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="#D8EEF5"/>
+        <circle class="a-sun" cx="262" cy="44" r="18" fill="#FFB703"/>
+        <g class="a-drift"><rect x="30" y="52" width="58" height="16" rx="8" fill="#FFFFFF"/><rect x="44" y="42" width="30" height="16" rx="8" fill="#FFFFFF"/></g>
+        <path d="M0 140 Q80 104 160 140 T320 132 V180 H0 Z" fill="#2A9D8F"/>
+        <g class="a-float"><use href="#env" fill="#E76F51"/><use href="#stripe-fill" fill="#F4A261"/><use href="#ropes" stroke="#264653" stroke-width="2" fill="none"/><use href="#basket" fill="#264653"/></g>
+        <path d="M0 160 Q100 140 200 162 T320 156 V180 H0 Z" fill="#264653"/>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 3 / 9</span><h3>Ilustrație vectorială</h3>
+        <p class="ptext" id="s3">Stil: ilustrație vectorială plată. Forme geometrice curate, o paletă restrânsă de 4–5 culori, fără texturi, mult aer, compoziție clară pe grilă. Mișcarea e precisă și lină (ease-in-out), cu transformări curate și morphing de forme.</p>
+        <button class="copy" type="button" data-copy="s3">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="#FFD23F"/><rect width="320" height="180" fill="url(#dots)"/>
+        <polygon points="160,14 178,46 214,34 198,66 236,80 198,94 214,126 178,114 160,146 142,114 106,126 122,94 84,80 122,66 106,34 142,46" fill="#FFFFFF" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#111" stroke-width="3" stroke-linecap="round"><line x1="40" y1="70" x2="78" y2="70"/><line x1="30" y1="86" x2="80" y2="86"/><line x1="44" y1="102" x2="76" y2="102"/></g>
+        <g class="a-bounce">
+          <use href="#env" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+          <use href="#env" fill="#FF5D8F" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+          <use href="#stripe-fill" fill="#3ABEFF" stroke="#111" stroke-width="3"/>
+          <use href="#ropes" stroke="#111" stroke-width="3" fill="none"/>
+          <use href="#basket" fill="#FF9F1C" stroke="#111" stroke-width="4"/>
+        </g>
+        <g class="a-pop"><text x="252" y="150" text-anchor="middle" font-family="Urbanist, Arial, sans-serif" font-weight="900" font-size="34" fill="#FFFFFF" stroke="#111" stroke-width="3" paint-order="stroke">POP!</text></g>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 4 / 9</span><h3>Benzi desenate și stickere</h3>
+        <p class="ptext" id="s4">Stil: benzi desenate și stickere. Contur negru gros, culori plate și vii, margine albă de sticker în jurul formelor, puncte halftone și onomatopee scrise. Mișcarea e scurtă și elastică: sărituri, squash and stretch, recul cu depășire și linii de viteză.</p>
+        <button class="copy" type="button" data-copy="s4">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" shape-rendering="crispEdges" aria-hidden="true">
+        <rect width="320" height="180" fill="#1D2B53"/>
+        <g fill="#FFF1E8"><rect x="30" y="24" width="3" height="3"/><rect x="88" y="54" width="3" height="3"/><rect x="232" y="18" width="3" height="3"/><rect x="286" y="62" width="3" height="3"/><rect x="58" y="110" width="3" height="3"/></g>
+        <g class="a-pxc" fill="#C2C3C7"><rect x="216" y="96" width="42" height="6"/><rect x="222" y="90" width="24" height="6"/><rect x="210" y="102" width="54" height="6"/></g>
+        <g class="a-px" id="px-balloon"></g>
+        <rect x="0" y="150" width="320" height="6" fill="#00E436"/><rect x="0" y="156" width="320" height="24" fill="#008751"/>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 5 / 9</span><h3>Pixel art</h3>
+        <p class="ptext" id="s5">Stil: pixel art. O singură grilă de pixeli la rezoluție mică, o paletă de 12–16 culori, siluete clare, fără netezire. Animație cadru cu cadru, la 8–12 desene pe secundă; obiectele se mută doar cu pixeli întregi; pixelii rămân clari la scalare.</p>
+        <button class="copy" type="button" data-copy="s5">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="#1B1840"/>
+        <g class="kt-a" font-family="Urbanist, Arial, sans-serif" fill="#FFFFFF">
+          <text x="30" y="78" font-size="16" letter-spacing="3" fill="#B9B6D6" font-weight="800">NU MAI SCRIE</text>
+          <text x="28" y="122" font-weight="900" font-size="44" letter-spacing="-1">prompturi.</text>
+        </g>
+        <g class="kt-b"><text x="160" y="106" text-anchor="middle" font-family="Urbanist, Arial, sans-serif" font-weight="900" font-size="50" letter-spacing="-1" fill="#FFDAFA">Regizează.</text></g>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 6 / 9</span><h3>Tipografie cinetică</h3>
+        <p class="ptext" id="s6">Eroul e textul: cuvinte mari, contrast de mărimi și grosimi, un cuvânt-cheie scos în evidență cu culoare. Cuvintele apar pe ritmul vorbirii sau al muzicii (deplasări, măști, schimbări de scară și unghi), iar fiecare cuvânt stă pe ecran destul cât să poată fi citit.</p>
+        <button class="copy" type="button" data-copy="s6">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="#05070D"/><rect width="320" height="180" fill="url(#ngrid)"/>
+        <g stroke="#22D3EE" stroke-width="1.5" fill="none" opacity=".8"><path d="M14 30 V14 H30"/><path d="M290 14 H306 V30"/><path d="M14 150 V166 H30"/><path d="M306 150 V166 H290"/></g>
+        <g filter="url(#glow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <g class="n-draw" stroke="#22D3EE" stroke-width="1.6"><use href="#env"/><use href="#ropes"/></g>
+          <g class="n-draw" stroke="#E879F9" stroke-width="1.4" style="animation-delay:.25s"><use href="#stripes"/></g>
+          <rect x="148" y="134" width="24" height="16" stroke="#22D3EE" stroke-width="1.4"/>
+        </g>
+        <rect class="n-scan" x="0" y="0" width="320" height="2" fill="#22D3EE" opacity=".35"/>
+        <g font-family="Cascadia Mono, Consolas, monospace" font-size="9" letter-spacing="1.5">
+          <text x="226" y="70" fill="#22D3EE">ALT 1 240 M</text><text x="226" y="84" fill="#22D3EE" opacity=".6">VIT 12 KM/H</text><text class="n-pulse" x="30" y="150" fill="#E879F9">● REC</text>
+        </g>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 7 / 9</span><h3>Neon tech</h3>
+        <p class="ptext" id="s7">Stil: neon tech. Linii subțiri luminoase în 2–3 culori pe un fundal aproape negru, elemente HUD, grile și date, o strălucire moale, fără zone arse. Liniile se desenează, scanează și pulsează; fără podea reflectorizantă și fără reflexe întâmplătoare.</p>
+        <button class="copy" type="button" data-copy="s7">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="url(#g3dbg)"/>
+        <g filter="url(#dof)">
+          <ellipse class="a-shadow" cx="62" cy="160" rx="20" ry="4" fill="#5A3E7A" filter="url(#blur3)"/>
+          <circle class="a-soft2" cx="62" cy="128" r="20" fill="url(#g3dorb)"/>
+          <ellipse cx="258" cy="160" rx="24" ry="4" fill="#3E4E7A" opacity=".2" filter="url(#blur3)"/>
+          <rect x="236" y="112" width="44" height="44" rx="12" fill="url(#g3dbox)" transform="rotate(-10 258 134)"/>
+        </g>
+        <ellipse class="a-shadow" cx="160" cy="164" rx="40" ry="6" fill="#5A3E7A" filter="url(#blur3)"/>
+        <g class="a-soft">
+          <use href="#env" fill="url(#g3denv)"/><use href="#stripe-fill" fill="url(#g3dstr)"/>
+          <ellipse cx="140" cy="58" rx="10" ry="16" fill="#FFFFFF" opacity=".55" filter="url(#dof)" transform="rotate(20 140 58)"/>
+          <use href="#ropes" stroke="#B88A5C" stroke-width="2" fill="none"/>
+          <rect x="148" y="134" width="24" height="16" rx="4" fill="url(#g3dbas)"/>
+        </g>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 8 / 9</span><h3>3D premium</h3>
+        <p class="ptext" id="s8">Stil: 3D stilizat premium. Forme volumetrice simplificate cu muchii rotunjite, materiale lucioase și mate, lumină moale de studio și umbre de contact, paletă pastel. E grafică, nu fotorealism: camera alunecă în jurul obiectului, iar profunzimea de câmp scoate în față elementul principal.</p>
+        <button class="copy" type="button" data-copy="s8">Copiază promptul</button></div>
+    </article>
+
+    <article class="scard">
+      <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
+        <rect width="320" height="180" fill="#EDF3FE"/>
+        <g filter="url(#uishadow)"><rect x="60" y="26" width="200" height="128" rx="14" fill="#FFFFFF"/></g>
+        <text x="80" y="54" font-family="Urbanist, Arial, sans-serif" font-weight="800" font-size="13" fill="#1B1840">Zbor nou</text>
+        <rect x="80" y="62" width="70" height="6" rx="3" fill="#E3E7EE"/>
+        <g><circle class="ui-chk" cx="86" cy="86" r="5"/><circle class="ui-chk" cx="86" cy="102" r="5"/><circle class="ui-chk" cx="86" cy="118" r="5"/></g>
+        <rect x="98" y="83" width="90" height="6" rx="3" fill="#D5DAE3"/><rect x="98" y="99" width="70" height="6" rx="3" fill="#D5DAE3"/><rect x="98" y="115" width="80" height="6" rx="3" fill="#D5DAE3"/>
+        <rect class="ui-btn" x="170" y="116" width="74" height="24" rx="12"/>
+        <text class="ui-t1" x="207" y="132" text-anchor="middle" font-family="Urbanist, Arial, sans-serif" font-weight="800" font-size="10" fill="#FFFFFF">Lansează</text>
+        <text class="ui-t2" x="207" y="132" text-anchor="middle" font-family="Urbanist, Arial, sans-serif" font-weight="800" font-size="10" fill="#FFFFFF">Gata ✓</text>
+        <circle class="ui-rip" cx="206" cy="128" r="8" fill="#433AE8"/>
+        <g class="ui-cur"><path d="M0 0 L0 22 L6 17 L10 26 L14 24 L10 15 L18 15 Z" fill="#1B1840" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/></g>
+      </svg></div>
+      <div class="body"><span class="tag">Stil 9 / 9</span><h3>SaaS / interfață</h3>
+        <p class="ptext" id="s9">Stil: animație de interfață de produs. Carduri UI deschise la culoare, cu colțuri rotunjite și umbre moi, într-o perspectivă 3D discretă, și un cursor mare, bine vizibil. Arată acțiunea pas cu pas (hover → click → schimbare de stare → rezultat), cu tranziții line și text de interfață lizibil.</p>
+        <button class="copy" type="button" data-copy="s9">Copiază promptul</button></div>
+    </article>
+  </div>
+
+  <div style="display:grid;gap:14px">
+    <h3 style="font-size:26px;color:var(--blue)">Alege adâncimea</h3>
+    <div class="styles">
+      <article class="scard">
         <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="#F5F1E8"/>
-          <g filter="url(#boil)" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <g class="a-float">
-              <use href="#env"/><use href="#env" transform="translate(1.8 1.2)" opacity=".45"/>
-              <use href="#stripes"/><use href="#ropes"/><use href="#basket"/>
-            </g>
-            <path d="M34 62 q10 -14 24 -6 q8 -12 22 -2 q14 0 12 12 h-58 z"/>
-            <path d="M232 138 q12 -16 26 -8 q10 -10 22 0 q12 2 10 12 h-58 z"/>
-            <path d="M0 166 C60 152 120 172 180 160 S 290 150 320 162"/>
-          </g>
+          <rect width="320" height="180" fill="#EDF3FE"/>
+          <g class="a-slide"><circle cx="96" cy="90" r="34" fill="#433AE8"/></g>
+          <g class="eq" fill="#1B1840"><rect x="160" y="60" width="14" height="70" rx="3"/><rect x="182" y="60" width="14" height="70" rx="3"/><rect x="204" y="60" width="14" height="70" rx="3"/><rect x="226" y="60" width="14" height="70" rx="3"/><rect x="248" y="60" width="14" height="70" rx="3"/></g>
+          <path d="M40 150 Q70 136 100 150 T160 150 T220 150 T280 150" fill="none" stroke="#E53962" stroke-width="3"/>
         </svg></div>
-        <div class="body">
-          <span class="idx">Stil 01 / 09</span>
-          <h3>Desenat de mână</h3>
-          <p class="ptext" id="s1">Stil: desen în tuș pe hârtie deschisă. Contururi vii, neuniforme, pe alocuri linie dublă și mici întreruperi; fără umpluturi și fără hașuri. Liniile se desenează pe traseul peniței; contururile „fierb” ușor, redesenate de 8–12 ori pe secundă; mișcarea e moale și reținută.</p>
-          <button class="btn copy" type="button" data-copy="s1">Copiază promptul</button>
-        </div>
+        <div class="body"><span class="tag t1">Adâncime 10</span><h3>2D</h3>
+          <p class="ptext" id="d1">Animează în 2D: forme plate, siluete clare și mișcare în planul cadrului. Păstrează compoziția simplă și lizibilă.</p>
+          <button class="copy" type="button" data-copy="d1">Copiază promptul</button></div>
       </article>
-
-      <!-- 2 paper collage -->
-      <article class="card">
+      <article class="scard">
         <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="#EADBC2"/>
-          <rect width="320" height="180" filter="url(#grain)"/>
-          <g filter="url(#paper)">
-            <circle cx="256" cy="46" r="20" fill="#F3C43B"/>
-            <g class="a-stepx"><path d="M26 70 q10 -14 24 -6 q8 -12 22 -2 q14 0 12 12 h-58 z" fill="#FFFDF7"/></g>
-            <path d="M0 150 C50 118 110 128 170 146 S 280 124 320 136 V180 H0 Z" fill="#8DB86B"/>
-            <g class="a-step">
-              <use href="#env" fill="#E4572E"/><use href="#stripe-fill" fill="#F3C43B"/>
-              <use href="#ropes" stroke="#5A3A1A" stroke-width="2" fill="none"/><use href="#basket" fill="#8B5E34"/>
-            </g>
-            <path d="M0 168 C70 150 150 176 220 162 S 300 160 320 166 V180 H0 Z" fill="#4F772D"/>
-          </g>
+          <rect width="320" height="180" fill="#E4E3F3"/>
+          <g class="par" style="--a:4" filter="url(#layer)"><rect x="40" y="30" width="150" height="100" rx="12" fill="#FFFFFF" fill-opacity=".8"/><circle cx="96" cy="80" r="30" fill="#433AE8"/></g>
+          <g class="par" style="--a:10" filter="url(#layer)"><rect x="120" y="46" width="150" height="100" rx="12" fill="#FFFFFF" fill-opacity=".75"/><g class="eq" fill="#1B1840"><rect x="146" y="80" width="12" height="52" rx="3"/><rect x="166" y="80" width="12" height="52" rx="3"/><rect x="186" y="80" width="12" height="52" rx="3"/><rect x="206" y="80" width="12" height="52" rx="3"/><rect x="226" y="80" width="12" height="52" rx="3"/></g></g>
+          <g class="par" style="--a:18"><path d="M60 156 Q90 140 120 156 T180 156 T240 156 T300 156" fill="none" stroke="#E53962" stroke-width="4"/></g>
         </svg></div>
-        <div class="body">
-          <span class="idx">Stil 02 / 09</span>
-          <h3>Colaj de hârtie</h3>
-          <p class="ptext" id="s2">Stil: colaj de hârtie. Forme decupate din hârtie colorată, cu margine neuniformă și textură vizibilă; fiecare strat aruncă o umbră moale pe cel de dedesubt. Mișcă elementele strat cu strat, ca niște decupaje pe masă: deplasări și rotiri cu un ușor efect stop-motion; adâncimea vine din parallaxul straturilor.</p>
-          <button class="btn copy" type="button" data-copy="s2">Copiază promptul</button>
-        </div>
+        <div class="body"><span class="tag t2">Adâncime 11</span><h3>2.5D</h3>
+          <p class="ptext" id="d2">Așază elementele plate pe mai multe planuri. Creează adâncime cu parallax, umbre moi și o mișcare mică de cameră. Nu simula grosime reală sau fețe laterale.</p>
+          <button class="copy" type="button" data-copy="d2">Copiază promptul</button></div>
       </article>
-
-      <!-- 3 vector -->
-      <article class="card">
-        <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="#D8EEF5"/>
-          <circle class="a-sun" cx="262" cy="44" r="18" fill="#FFB703"/>
-          <g class="a-drift"><rect x="30" y="52" width="58" height="16" rx="8" fill="#FFFFFF"/><rect x="44" y="42" width="30" height="16" rx="8" fill="#FFFFFF"/></g>
-          <path d="M0 140 Q80 104 160 140 T320 132 V180 H0 Z" fill="#2A9D8F"/>
-          <g class="a-float">
-            <use href="#env" fill="#E76F51"/><use href="#stripe-fill" fill="#F4A261"/>
-            <use href="#ropes" stroke="#264653" stroke-width="2" fill="none"/><use href="#basket" fill="#264653"/>
-          </g>
-          <path d="M0 160 Q100 140 200 162 T320 156 V180 H0 Z" fill="#264653"/>
-        </svg></div>
-        <div class="body">
-          <span class="idx">Stil 03 / 09</span>
-          <h3>Ilustrație vectorială</h3>
-          <p class="ptext" id="s3">Stil: ilustrație vectorială plată. Forme geometrice curate, o paletă restrânsă de 4–5 culori, fără texturi, mult aer, compoziție clară pe grilă. Mișcarea e precisă și lină (ease-in-out), cu transformări curate și morphing de forme.</p>
-          <button class="btn copy" type="button" data-copy="s3">Copiază promptul</button>
+      <article class="scard">
+        <div class="pv pv-3d" aria-hidden="true">
+          <div class="orb"></div>
+          <div class="scene"><div class="cube"><span class="f1"></span><span class="f2"></span><span class="f3"></span><span class="f4"></span><span class="f5"></span><span class="f6"></span></div><div class="floor"></div></div>
         </div>
-      </article>
-
-      <!-- 4 comics -->
-      <article class="card">
-        <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="#FFD23F"/>
-          <rect width="320" height="180" fill="url(#dots)"/>
-          <polygon points="160,14 178,46 214,34 198,66 236,80 198,94 214,126 178,114 160,146 142,114 106,126 122,94 84,80 122,66 106,34 142,46" fill="#FFFFFF" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-          <g stroke="#111" stroke-width="3" stroke-linecap="round"><line x1="40" y1="70" x2="78" y2="70"/><line x1="30" y1="86" x2="80" y2="86"/><line x1="44" y1="102" x2="76" y2="102"/></g>
-          <g class="a-bounce">
-            <use href="#env" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
-            <use href="#env" fill="#FF5D8F" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
-            <use href="#stripe-fill" fill="#3ABEFF" stroke="#111" stroke-width="3"/>
-            <use href="#ropes" stroke="#111" stroke-width="3" fill="none"/>
-            <use href="#basket" fill="#FF9F1C" stroke="#111" stroke-width="4"/>
-          </g>
-          <g class="a-pop"><text x="252" y="150" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="900" font-size="34" fill="#FFFFFF" stroke="#111" stroke-width="3" paint-order="stroke">POP!</text></g>
-        </svg></div>
-        <div class="body">
-          <span class="idx">Stil 04 / 09</span>
-          <h3>Benzi desenate și stickere</h3>
-          <p class="ptext" id="s4">Stil: benzi desenate și stickere. Contur negru gros, culori plate și vii, margine albă de sticker în jurul formelor, puncte halftone și onomatopee scrise. Mișcarea e scurtă și elastică: sărituri, squash and stretch, recul cu depășire și linii de viteză.</p>
-          <button class="btn copy" type="button" data-copy="s4">Copiază promptul</button>
-        </div>
-      </article>
-
-      <!-- 5 pixel -->
-      <article class="card">
-        <div class="pv"><svg viewBox="0 0 320 180" shape-rendering="crispEdges" aria-hidden="true">
-          <rect width="320" height="180" fill="#1D2B53"/>
-          <g fill="#FFF1E8"><rect x="30" y="24" width="3" height="3"/><rect x="88" y="54" width="3" height="3"/><rect x="232" y="18" width="3" height="3"/><rect x="286" y="62" width="3" height="3"/><rect x="58" y="110" width="3" height="3"/></g>
-          <g class="a-pxc" fill="#C2C3C7"><rect x="216" y="96" width="42" height="6"/><rect x="222" y="90" width="24" height="6"/><rect x="210" y="102" width="54" height="6"/></g>
-          <g class="a-px" id="px-balloon"></g>
-          <rect x="0" y="150" width="320" height="6" fill="#00E436"/>
-          <rect x="0" y="156" width="320" height="24" fill="#008751"/>
-        </svg></div>
-        <div class="body">
-          <span class="idx">Stil 05 / 09</span>
-          <h3>Pixel art</h3>
-          <p class="ptext" id="s5">Stil: pixel art. O singură grilă de pixeli la rezoluție mică, o paletă de 12–16 culori, siluete clare, fără netezire. Animație cadru cu cadru, la 8–12 desene pe secundă; obiectele se mută doar cu pixeli întregi; pixelii rămân clari la scalare.</p>
-          <button class="btn copy" type="button" data-copy="s5">Copiază promptul</button>
-        </div>
-      </article>
-
-      <!-- 6 kinetic type -->
-      <article class="card">
-        <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="#0A0A0A"/>
-          <g class="kt-a" font-family="Space Grotesk, Arial, sans-serif" fill="#FFFFFF">
-            <text x="30" y="78" font-size="16" letter-spacing="3" fill="#8A8A8A">NU MAI SCRIE</text>
-            <text x="28" y="122" font-family="Fraunces, Georgia, serif" font-weight="900" font-size="44" letter-spacing="-1.5">prompturi.</text>
-          </g>
-          <g class="kt-b"><text x="160" y="106" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="900" font-size="50" letter-spacing="-1.5" fill="#FF4C00">Regizează.</text></g>
-        </svg></div>
-        <div class="body">
-          <span class="idx">Stil 06 / 09</span>
-          <h3>Tipografie cinetică</h3>
-          <p class="ptext" id="s6">Eroul e textul: cuvinte mari, contrast de mărimi și grosimi, un cuvânt-cheie scos în evidență cu culoare. Cuvintele apar pe ritmul vorbirii sau al muzicii (deplasări, măști, schimbări de scară și unghi), iar fiecare cuvânt stă pe ecran destul cât să poată fi citit.</p>
-          <button class="btn copy" type="button" data-copy="s6">Copiază promptul</button>
-        </div>
-      </article>
-
-      <!-- 7 neon -->
-      <article class="card">
-        <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="#05070D"/>
-          <rect width="320" height="180" fill="url(#ngrid)"/>
-          <g stroke="#22D3EE" stroke-width="1.5" fill="none" opacity=".8"><path d="M14 30 V14 H30"/><path d="M290 14 H306 V30"/><path d="M14 150 V166 H30"/><path d="M306 150 V166 H290"/></g>
-          <g filter="url(#glow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <g class="n-draw" stroke="#22D3EE" stroke-width="1.6"><use href="#env"/><use href="#ropes"/></g>
-            <g class="n-draw" stroke="#E879F9" stroke-width="1.4" style="animation-delay:.25s"><use href="#stripes"/></g>
-            <rect x="148" y="134" width="24" height="16" stroke="#22D3EE" stroke-width="1.4"/>
-          </g>
-          <rect class="n-scan" x="0" y="0" width="320" height="2" fill="#22D3EE" opacity=".35"/>
-          <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="1.5">
-            <text x="226" y="70" fill="#22D3EE">ALT 1 240 M</text>
-            <text x="226" y="84" fill="#22D3EE" opacity=".6">VIT 12 KM/H</text>
-            <text class="n-pulse" x="30" y="150" fill="#E879F9">● REC</text>
-          </g>
-        </svg></div>
-        <div class="body">
-          <span class="idx">Stil 07 / 09</span>
-          <h3>Neon tech</h3>
-          <p class="ptext" id="s7">Stil: neon tech. Linii subțiri luminoase în 2–3 culori pe un fundal aproape negru, elemente HUD, grile și date, o strălucire moale, fără zone arse. Liniile se desenează, scanează și pulsează; fără podea reflectorizantă și fără reflexe întâmplătoare.</p>
-          <button class="btn copy" type="button" data-copy="s7">Copiază promptul</button>
-        </div>
-      </article>
-
-      <!-- 8 premium 3D -->
-      <article class="card">
-        <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="url(#g3dbg)"/>
-          <g filter="url(#dof)">
-            <ellipse class="a-shadow" cx="62" cy="160" rx="20" ry="4" fill="#5A3E7A" filter="url(#blur3)"/>
-            <circle class="a-soft2" cx="62" cy="128" r="20" fill="url(#g3dorb)"/>
-            <ellipse cx="258" cy="160" rx="24" ry="4" fill="#3E4E7A" opacity=".2" filter="url(#blur3)"/>
-            <rect x="236" y="112" width="44" height="44" rx="12" fill="url(#g3dbox)" transform="rotate(-10 258 134)"/>
-          </g>
-          <ellipse class="a-shadow" cx="160" cy="164" rx="40" ry="6" fill="#5A3E7A" filter="url(#blur3)"/>
-          <g class="a-soft">
-            <use href="#env" fill="url(#g3denv)"/>
-            <use href="#stripe-fill" fill="url(#g3dstr)"/>
-            <ellipse cx="140" cy="58" rx="10" ry="16" fill="#FFFFFF" opacity=".55" filter="url(#dof)" transform="rotate(20 140 58)"/>
-            <use href="#ropes" stroke="#B88A5C" stroke-width="2" fill="none"/>
-            <rect x="148" y="134" width="24" height="16" rx="4" fill="url(#g3dbas)"/>
-          </g>
-        </svg></div>
-        <div class="body">
-          <span class="idx">Stil 08 / 09</span>
-          <h3>3D premium</h3>
-          <p class="ptext" id="s8">Stil: 3D stilizat premium. Forme volumetrice simplificate cu muchii rotunjite, materiale lucioase și mate, lumină moale de studio și umbre de contact, paletă pastel. E grafică, nu fotorealism: camera alunecă în jurul obiectului, iar profunzimea de câmp scoate în față elementul principal.</p>
-          <button class="btn copy" type="button" data-copy="s8">Copiază promptul</button>
-        </div>
-      </article>
-
-      <!-- 9 SaaS / UI -->
-      <article class="card">
-        <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-          <rect width="320" height="180" fill="#EEF1F7"/>
-          <g filter="url(#uishadow)"><rect x="60" y="26" width="200" height="128" rx="14" fill="#FFFFFF"/></g>
-          <text x="80" y="54" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="13" fill="#111">Zbor nou</text>
-          <rect x="80" y="62" width="70" height="6" rx="3" fill="#E3E7EE"/>
-          <g><circle class="ui-chk" cx="86" cy="86" r="5"/><circle class="ui-chk" cx="86" cy="102" r="5"/><circle class="ui-chk" cx="86" cy="118" r="5"/></g>
-          <rect x="98" y="83" width="90" height="6" rx="3" fill="#D5DAE3"/><rect x="98" y="99" width="70" height="6" rx="3" fill="#D5DAE3"/><rect x="98" y="115" width="80" height="6" rx="3" fill="#D5DAE3"/>
-          <rect class="ui-btn" x="170" y="116" width="74" height="24" rx="8"/>
-          <text class="ui-t1" x="207" y="132" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="10" fill="#FFFFFF">Lansează</text>
-          <text class="ui-t2" x="207" y="132" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="10" fill="#0A0A0A">Gata ✓</text>
-          <circle class="ui-rip" cx="206" cy="128" r="8" fill="#FF4C00"/>
-          <g class="ui-cur"><path d="M0 0 L0 22 L6 17 L10 26 L14 24 L10 15 L18 15 Z" fill="#0A0A0A" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/></g>
-        </svg></div>
-        <div class="body">
-          <span class="idx">Stil 09 / 09</span>
-          <h3>SaaS / interfață</h3>
-          <p class="ptext" id="s9">Stil: animație de interfață de produs. Carduri UI deschise la culoare, cu colțuri rotunjite și umbre moi, într-o perspectivă 3D discretă, și un cursor mare, bine vizibil. Arată acțiunea pas cu pas (hover → click → schimbare de stare → rezultat), cu tranziții line și text de interfață lizibil.</p>
-          <button class="btn copy" type="button" data-copy="s9">Copiază promptul</button>
-        </div>
+        <div class="body"><span class="tag t3">Adâncime 12</span><h3>3D</h3>
+          <p class="ptext" id="d3">Animează forme volumetrice stilizate în spațiu tridimensional. Folosește perspectivă, lumină moale și o mișcare de cameră cu sens.</p>
+          <button class="copy" type="button" data-copy="d3">Copiază promptul</button></div>
       </article>
     </div>
+  </div>
 
-    <div class="sub">
-      <h3>Alege <em>adâncimea</em></h3>
-      <div class="grid3">
-        <article class="card">
-          <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-            <rect width="320" height="180" fill="#F2F2F2"/>
-            <g class="a-slide"><circle cx="96" cy="90" r="34" fill="#FF4C00"/></g>
-            <g class="eq" fill="#0A0A0A"><rect x="160" y="60" width="14" height="70"/><rect x="182" y="60" width="14" height="70"/><rect x="204" y="60" width="14" height="70"/><rect x="226" y="60" width="14" height="70"/><rect x="248" y="60" width="14" height="70"/></g>
-            <path d="M40 150 Q70 136 100 150 T160 150 T220 150 T280 150" fill="none" stroke="#FF4C00" stroke-width="3"/>
-          </svg></div>
-          <div class="body">
-            <span class="idx">Adâncime 10</span>
-            <h3>2D</h3>
-            <p class="ptext" id="d1">Animează în 2D: forme plate, siluete clare și mișcare în planul cadrului. Păstrează compoziția simplă și lizibilă.</p>
-            <button class="btn copy" type="button" data-copy="d1">Copiază promptul</button>
-          </div>
-        </article>
-        <article class="card">
-          <div class="pv"><svg viewBox="0 0 320 180" aria-hidden="true">
-            <rect width="320" height="180" fill="#E9E9E9"/>
-            <g class="par" style="--a:4" filter="url(#layer)"><rect x="40" y="30" width="150" height="100" fill="#FFFFFF" fill-opacity=".75" stroke="#0A0A0A" stroke-opacity=".15"/><circle cx="96" cy="80" r="30" fill="#FF4C00"/></g>
-            <g class="par" style="--a:10" filter="url(#layer)"><rect x="120" y="46" width="150" height="100" fill="#FFFFFF" fill-opacity=".7" stroke="#0A0A0A" stroke-opacity=".15"/><g class="eq" fill="#0A0A0A"><rect x="146" y="80" width="12" height="52"/><rect x="166" y="80" width="12" height="52"/><rect x="186" y="80" width="12" height="52"/><rect x="206" y="80" width="12" height="52"/><rect x="226" y="80" width="12" height="52"/></g></g>
-            <g class="par" style="--a:18"><path d="M60 156 Q90 140 120 156 T180 156 T240 156 T300 156" fill="none" stroke="#FF4C00" stroke-width="4"/></g>
-          </svg></div>
-          <div class="body">
-            <span class="idx">Adâncime 11</span>
-            <h3>2.5D</h3>
-            <p class="ptext" id="d2">Așază elementele plate pe mai multe planuri. Creează adâncime cu parallax, umbre moi și o mișcare mică de cameră. Nu simula grosime reală sau fețe laterale.</p>
-            <button class="btn copy" type="button" data-copy="d2">Copiază promptul</button>
-          </div>
-        </article>
-        <article class="card">
-          <div class="pv pv-3d" aria-hidden="true">
-            <div class="orb"></div>
-            <div class="scene"><div class="cube"><span class="f1"></span><span class="f2"></span><span class="f3"></span><span class="f4"></span><span class="f5"></span><span class="f6"></span></div><div class="floor"></div></div>
-          </div>
-          <div class="body">
-            <span class="idx">Adâncime 12</span>
-            <h3>3D</h3>
-            <p class="ptext" id="d3">Animează forme volumetrice stilizate în spațiu tridimensional. Folosește perspectivă, lumină moale și o mișcare de cameră cu sens.</p>
-            <button class="btn copy" type="button" data-copy="d3">Copiază promptul</button>
-          </div>
-        </article>
+  <div class="formula" aria-label="Formula promptului"><span class="f">Povestea ta</span><span class="op">+</span><span class="f">stilul</span><span class="op">+</span><span class="f">adâncimea</span><span class="op">=</span><span class="f b">promptul</span></div>
+
+  <div class="prompt">
+    <div class="top"><span class="lbl">Demo etapa 2 · un obiect, toate stilurile</span><button class="copy" type="button" data-copy="p-styles">Copiază</button></div>
+    <pre id="p-styles"><span class="t">[Obiect] în stiluri</span>
+Studiază skill-ul meu motion-director. Arată <span class="ph">[OBIECT]</span> în stil desenat de mână, colaj de hârtie și neon tech, apoi în 2D, 2.5D și 3D. Desfă-l în piese și asamblează-l la loc. La final animează frumos logoul <span class="ph">[BRAND]</span>. Scrie pe ecran numele fiecărei etape.</pre>
+    <p class="hint">La meniul skill-ului răspunde: Custom, stilurile sunt în prompt (1, 2, 7, apoi 10, 11, 12), 16:9, 20 de secunde, cu muzică.</p>
+  </div>
+</section>
+
+<!-- 3 EXAMPLES -->
+<section class="panel grid-bg" id="exemple" style="background-color:#EEFFF1">
+  <div class="hd"><span class="chip t1">Etapa 3 · Exemple</span><span class="chip">3 / 4</span></div>
+  <div class="head">
+    <h2>Ia stilul de la cei mai buni</h2>
+    <p class="lead">Găsește un clip care îți place și trimite-i lui Claude <b>un fragment de până la 60 de secunde</b>. Cere-i să analizeze stilul și mișcarea, apoi să le aplice pe povestea ta.</p>
+  </div>
+
+  <div class="two">
+    <div style="display:grid;gap:12px;align-content:start">
+      <span class="sub-title">Librării de prompturi</span>
+      <div class="links">
+        <a class="lrow" href="https://oneshotted.io/" target="_blank" rel="noopener"><span class="n">oneshotted.io</span><span class="go">Deschide ↗</span><span class="d">Mii de clipuri făcute de agenți AI, fiecare cu promptul lui. Filtrează după Agent: Claude Code.</span></a>
       </div>
     </div>
+    <div style="display:grid;gap:12px;align-content:start">
+      <span class="sub-title">Canale YouTube cu animație explicativă</span>
+      <div class="links">
+        <a class="lrow" href="https://www.youtube.com/@kurzgesagt" target="_blank" rel="noopener"><span class="n">Kurzgesagt</span><span class="go">Deschide ↗</span><span class="d">Vector plat saturat, planuri cu parallax, știință explicată pe scurt.</span></a>
+        <a class="lrow" href="https://www.youtube.com/@TEDEd" target="_blank" rel="noopener"><span class="n">TED-Ed</span><span class="go">Deschide ↗</span><span class="d">Lecții animate, fiecare cu alt ilustrator și alt stil.</span></a>
+        <a class="lrow" href="https://www.youtube.com/@OverSimplified" target="_blank" rel="noopener"><span class="n">OverSimplified</span><span class="go">Deschide ↗</span><span class="d">Istorie cu personaje simple și umor, ritm rapid.</span></a>
+        <a class="lrow" href="https://www.youtube.com/@MinuteEarth" target="_blank" rel="noopener"><span class="n">MinuteEarth</span><span class="go">Deschide ↗</span><span class="d">Desen simplu, explicații scurte despre natură și planetă.</span></a>
+      </div>
+    </div>
+  </div>
 
-    <div class="formula" aria-label="Formula promptului"><span>Povestea ta</span><span class="op">+</span><i>stilul</i><span class="op">+</span><i>adâncimea</i><span class="op">=</span><span>promptul</span></div>
+  <div class="card steps">
+    <div class="step"><div class="n">1</div><div><h4>Taie un fragment</h4><p>De 20–30 de secunde. Limita e <b>60</b>.</p></div></div>
+    <div class="step"><div class="n">2</div><div><h4>Atașează-l</h4><p>Pune clipul în folderul proiectului sau trage-l în chat.</p></div></div>
+    <div class="step"><div class="n">3</div><div><h4>Lipește promptul</h4><p>Și alege <b>„Custom”</b> la meniul de stil.</p></div></div>
+  </div>
 
+  <div class="two">
     <div class="prompt">
-      <header><span class="kicker">Demo etapa 2 · un obiect, toate stilurile</span><button class="btn copy" type="button" data-copy="p-styles">Copiază</button></header>
-      <pre id="p-styles"><span class="t">[Obiect] în stiluri</span>
-Studiază skill-ul meu motion-director. Arată [OBIECT] în stil desenat de mână, colaj de hârtie și neon tech, apoi în 2D, 2.5D și 3D. Desfă-l în piese și asamblează-l la loc. La final animează frumos logoul [BRAND]. Scrie pe ecran numele fiecărei etape.</pre>
-      <p class="hint">La meniul skill-ului răspunde: Custom, stilurile sunt în prompt (1, 2, 7, apoi 10, 11, 12), 16:9, 20 de secunde, cu muzică.</p>
+      <div class="top"><span class="lbl">Prompt · stil după referință</span><button class="copy" type="button" data-copy="p-ref">Copiază</button></div>
+      <pre id="p-ref">Studiază skill-ul meu motion-director și analizează cadru cu cadru clipul atașat. Creează o animație nouă de 20 de secunde despre <span class="ph">[SUBIECT]</span>, folosind aceeași stilistică și aceleași procedee de mișcare. Copiază doar stilul, nu personajele, logoul sau muzica.</pre>
     </div>
-  </div>
-</section>
-
-<!-- 03 EXAMPLES -->
-<section class="band dark" id="exemple">
-  <div class="wrap">
-    <div class="head">
-      <div class="kicker"><b>03 / 04</b> · Exemple de animație</div>
-      <h2>Ia stilul de la cei <em>mai buni</em>.</h2>
-      <p class="lead">Găsește un clip care îți place și trimite-i lui Claude un fragment de până la 60 de secunde. Cere-i să analizeze stilul și mișcarea, apoi să le aplice pe povestea ta.</p>
-    </div>
-
-    <div class="cols">
-      <div class="sub">
-        <div class="kicker">Librării de prompturi</div>
-        <div class="list">
-          <a class="row" href="https://oneshotted.io/" target="_blank" rel="noopener"><span class="n">oneshotted.io</span><span class="go">Deschide ↗</span><span class="d">Mii de clipuri făcute de agenți AI, fiecare cu promptul lui. Filtrează după Agent: Claude Code.</span></a>
-        </div>
-      </div>
-      <div class="sub">
-        <div class="kicker">Canale YouTube cu animație explicativă</div>
-        <div class="list">
-          <a class="row" href="https://www.youtube.com/@kurzgesagt" target="_blank" rel="noopener"><span class="n">Kurzgesagt</span><span class="go">Deschide ↗</span><span class="d">Vector plat saturat, planuri cu parallax, știință explicată pe scurt.</span></a>
-          <a class="row" href="https://www.youtube.com/@TEDEd" target="_blank" rel="noopener"><span class="n">TED-Ed</span><span class="go">Deschide ↗</span><span class="d">Lecții animate, fiecare cu alt ilustrator și alt stil.</span></a>
-          <a class="row" href="https://www.youtube.com/@OverSimplified" target="_blank" rel="noopener"><span class="n">OverSimplified</span><span class="go">Deschide ↗</span><span class="d">Istorie cu personaje simple și umor, ritm rapid.</span></a>
-          <a class="row" href="https://www.youtube.com/@MinuteEarth" target="_blank" rel="noopener"><span class="n">MinuteEarth</span><span class="go">Deschide ↗</span><span class="d">Desen simplu, explicații scurte despre natură și planetă.</span></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="steps">
-      <div class="step"><span class="num">1</span><p>Taie un fragment de 20–30 de secunde. Limita e 60.</p></div>
-      <div class="step"><span class="num">2</span><p>Pune clipul în folderul proiectului sau atașează-l în chat.</p></div>
-      <div class="step"><span class="num">3</span><p>Lipește promptul și alege „Custom” la meniul de stil.</p></div>
-    </div>
-
-    <div class="pair">
-      <div class="prompt">
-        <header><span class="kicker">Prompt · stil după referință</span><button class="btn copy" type="button" data-copy="p-ref">Copiază</button></header>
-        <pre id="p-ref">Studiază skill-ul meu motion-director și analizează cadru cu cadru clipul atașat. Creează o animație nouă de 20 de secunde despre [SUBIECT], folosind aceeași stilistică și aceleași procedee de mișcare. Copiază doar stilul, nu personajele, logoul sau muzica.</pre>
-      </div>
-      <div class="prompt">
-        <header><span class="kicker">Exemplu din lecție · stil Kurzgesagt</span><button class="btn copy" type="button" data-copy="p-dopa">Copiază</button></header>
-        <pre id="p-dopa"><span class="t">Dopamina din Reels</span>
+    <div class="prompt">
+      <div class="top"><span class="lbl">Exemplu din lecție · stil Kurzgesagt</span><button class="copy" type="button" data-copy="p-dopa">Copiază</button></div>
+      <pre id="p-dopa"><span class="t">Dopamina din Reels</span>
 Studiază skill-ul meu motion-director și analizează cadru cu cadru clipul atașat. Creează o animație nouă de 20 de secunde, 9:16, despre ce se întâmplă în creier când dai scroll pe Reels: fiecare swipe aduce o mică doză de dopamină, creierul cere încă una, iar bucla se strânge tot mai tare. Inventează o poveste scurtă, cu un final care lasă o idee clară. Folosește aceeași stilistică și aceleași procedee de mișcare ca în referință. Copiază doar stilul, nu personajele, logoul sau muzica. Textul de pe ecran e în română.</pre>
+    </div>
+  </div>
+
+  <p class="warn"><b>Atenție:</b> copiezi stilul și mișcarea. Personajele, logoul și muzica rămân ale autorului.</p>
+</section>
+
+<!-- 4 IMAGES & 3D -->
+<section class="panel grid-bg" id="3d" style="background-color:#FFF0FD">
+  <div class="hd"><span class="chip t3">Etapa 4 · Imagini și 3D</span><span class="chip">4 / 4</span></div>
+  <div class="head">
+    <h2>Personaj propriu și obiecte 3D</h2>
+    <p class="lead">Pentru animație cadru cu cadru generează câteva imagini aproape identice. <b>Personajul rămâne același, se schimbă doar poza.</b> Pune lângă ele 1–2 modele 3D și descrie reclama.</p>
+  </div>
+
+  <div style="display:grid;gap:12px">
+    <span class="sub-title">5 poze ale aceluiași personaj</span>
+    <div class="poses">
+      <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#1B1840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46" rx="6"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#433AE8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 22,54 30,28"/><polyline points="47,40 58,54 50,28"/></g></svg><span>Surprins</span></div>
+      <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#1B1840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46" rx="6"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#433AE8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 26,62 28,80"/><polyline points="47,40 62,50 76,42"/></g></svg><span>Prezintă</span></div>
+      <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#1B1840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46" rx="6"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#433AE8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 26,60 48,64"/><polyline points="47,40 56,56 44,33"/></g></svg><span>Interesat</span></div>
+      <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#1B1840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46" rx="6"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#433AE8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 26,62 28,80"/><polyline points="47,40 60,50 52,25"/></g><path d="M58 18 q6 -3 10 0 M60 12 q8 -4 13 0" fill="none" stroke="#1B1840" stroke-width="1.6" stroke-linecap="round"/></svg><span>Șoptește</span></div>
+      <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#1B1840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46" rx="6"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#433AE8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 22,56 36,52"/><polyline points="47,40 58,56 44,52"/></g><path d="M40 62 C30 54 33 45 40 50 C47 45 50 54 40 62 Z" fill="#E53962"/></svg><span>Inimă</span></div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="top"><span class="lbl">Prompt pentru poze · Nano Banana Pro sau alt generator</span><button class="copy" type="button" data-copy="p-poses">Copiază</button></div>
+    <pre id="p-poses">Same person as in the reference photo, full body, black t-shirt, grey trousers, plain dark-grey studio background, soft key light. Pose: <span class="ph">[surprised / presenting with an open hand / interested, hand on chin / whispering, hand by the mouth / heart shape with hands]</span>. Keep face, clothes, light and framing identical; change only the pose.</pre>
+    <p class="hint">Generezi câte o imagine pentru fiecare poză, apoi scoți fundalul (PNG transparent).</p>
+  </div>
+
+  <div class="two">
+    <div style="display:grid;gap:12px;align-content:start">
+      <span class="sub-title">Modele 3D gratuite</span>
+      <div class="links">
+        <a class="lrow" href="https://sketchfab.com/" target="_blank" rel="noopener"><span class="n">Sketchfab</span><span class="go">Deschide ↗</span><span class="d">Modele realiste și stilizate. Filtrează după „Downloadable”.</span></a>
+        <a class="lrow" href="https://polyhaven.com/models" target="_blank" rel="noopener"><span class="n">Poly Haven</span><span class="go">Deschide ↗</span><span class="d">Obiecte realiste, texturi și HDRI, toate CC0.</span></a>
+        <a class="lrow" href="https://poly.pizza/" target="_blank" rel="noopener"><span class="n">Poly Pizza</span><span class="go">Deschide ↗</span><span class="d">Modele low-poly gratuite, gata de folosit.</span></a>
+        <a class="lrow" href="https://kenney.nl/assets" target="_blank" rel="noopener"><span class="n">Kenney</span><span class="go">Deschide ↗</span><span class="d">Seturi stilizate pentru jocuri, CC0.</span></a>
+        <a class="lrow" href="https://quaternius.com/" target="_blank" rel="noopener"><span class="n">Quaternius</span><span class="go">Deschide ↗</span><span class="d">Personaje, obiecte și animații gratuite.</span></a>
       </div>
     </div>
+    <div style="display:grid;gap:12px;align-content:start">
+      <span class="sub-title">Reguli</span>
+      <p class="info"><b>GLB sau glTF.</b> GLB e un singur fișier, ușor de atașat în chat.</p>
+      <p class="info"><b>Verifică licența.</b> CC0 e liber; CC-BY cere să menționezi autorul.</p>
+      <p class="warn"><b>Nu găsești modelul?</b> Generează o imagine a produsului și transform-o în GLB cu un instrument „Image to 3D”.</p>
+    </div>
+  </div>
 
-    <p class="note">Copiezi stilul și mișcarea. Personajele, logoul și muzica rămân ale autorului.</p>
+  <div class="prompt">
+    <div class="top"><span class="lbl">Demo etapa 4 · reclamă din poze și modele 3D</span><button class="copy" type="button" data-copy="p-ad">Copiază</button></div>
+    <pre id="p-ad"><span class="t">Reclamă premium</span>
+Studiază skill-ul meu motion-director. Creează o reclamă premium pentru <span class="ph">[PRODUS]</span> din modelele 3D și pozele atașate, schimbând pozițiile personajului. Începe cu o lumină albă care se stinge treptat. Adaugă treceri frumoase ale camerei pe lângă obiecte și elemente 3D de interfață. Final: animația spectaculoasă a logoului <span class="ph">[BRAND]</span>.</pre>
+    <p class="hint">Tragi în chat cele 5 PNG și fișierele .glb. La meniu: 8 + 12, 16:9, 20 de secunde, cu muzică.</p>
   </div>
 </section>
 
-<!-- 04 IMAGES & 3D -->
-<section class="band light" id="3d">
-  <div class="wrap">
-    <div class="head">
-      <div class="kicker"><b>04 / 04</b> · Imagini și modele 3D</div>
-      <h2>Personaj propriu și obiecte 3D, <em>gratis</em>.</h2>
-      <p class="lead">Pentru animație cadru cu cadru generează câteva imagini aproape identice. Personajul rămâne același, se schimbă doar poza. Pune lângă ele 1–2 modele 3D și descrie reclama.</p>
-    </div>
-
-    <div class="sub">
-      <div class="kicker">5 poze ale aceluiași personaj</div>
-      <div class="poses">
-        <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#FF4C00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 22,54 30,28"/><polyline points="47,40 58,54 50,28"/></g></svg><span>01 · Surprins</span></div>
-        <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#FF4C00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 26,62 28,80"/><polyline points="47,40 62,50 76,42"/></g></svg><span>02 · Prezintă</span></div>
-        <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#FF4C00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 26,60 48,64"/><polyline points="47,40 56,56 44,33"/></g></svg><span>03 · Interesat</span></div>
-        <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#FF4C00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 26,62 28,80"/><polyline points="47,40 60,50 52,25"/></g><path d="M58 18 q6 -3 10 0 M60 12 q8 -4 13 0" fill="none" stroke="#0A0A0A" stroke-width="1.6" stroke-linecap="round"/></svg><span>04 · Șoptește</span></div>
-        <div class="pose"><svg viewBox="0 0 80 140" aria-hidden="true"><g fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="11"/><rect x="31" y="35" width="18" height="46"/><path d="M36 81 L30 128 M44 81 L50 128"/></g><g fill="none" stroke="#FF4C00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="33,40 22,56 36,52"/><polyline points="47,40 58,56 44,52"/></g><path d="M40 62 C30 54 33 45 40 50 C47 45 50 54 40 62 Z" fill="#FF4C00"/></svg><span>05 · Inimă</span></div>
-      </div>
-    </div>
-
-    <div class="prompt">
-      <header><span class="kicker">Prompt pentru poze · Nano Banana Pro sau alt generator</span><button class="btn copy" type="button" data-copy="p-poses">Copiază</button></header>
-      <pre id="p-poses">Same person as in the reference photo, full body, black t-shirt, grey trousers, plain dark-grey studio background, soft key light. Pose: [surprised / presenting with an open hand / interested, hand on chin / whispering, hand by the mouth / heart shape with hands]. Keep face, clothes, light and framing identical; change only the pose.</pre>
-      <p class="hint">Generezi câte o imagine pentru fiecare poză, apoi scoți fundalul (PNG transparent).</p>
-    </div>
-
-    <div class="cols">
-      <div class="sub">
-        <div class="kicker">Modele 3D gratuite</div>
-        <div class="list">
-          <a class="row" href="https://sketchfab.com/" target="_blank" rel="noopener"><span class="n">Sketchfab</span><span class="go">Deschide ↗</span><span class="d">Modele realiste și stilizate. Filtrează după „Downloadable”.</span></a>
-          <a class="row" href="https://polyhaven.com/models" target="_blank" rel="noopener"><span class="n">Poly Haven</span><span class="go">Deschide ↗</span><span class="d">Obiecte realiste, texturi și HDRI, toate CC0.</span></a>
-          <a class="row" href="https://poly.pizza/" target="_blank" rel="noopener"><span class="n">Poly Pizza</span><span class="go">Deschide ↗</span><span class="d">Modele low-poly gratuite, gata de folosit.</span></a>
-          <a class="row" href="https://kenney.nl/assets" target="_blank" rel="noopener"><span class="n">Kenney</span><span class="go">Deschide ↗</span><span class="d">Seturi stilizate pentru jocuri, CC0.</span></a>
-          <a class="row" href="https://quaternius.com/" target="_blank" rel="noopener"><span class="n">Quaternius</span><span class="go">Deschide ↗</span><span class="d">Personaje, obiecte și animații gratuite.</span></a>
-        </div>
-      </div>
-      <div class="sub">
-        <div class="kicker">Reguli</div>
-        <div class="cells" style="grid-template-columns:minmax(0,1fr)">
-          <div class="cell"><span class="num">GLB</span><p>Ia GLB sau glTF. GLB e un singur fișier, ușor de atașat.</p></div>
-          <div class="cell"><span class="num">CC</span><p>Verifică licența fiecărui model. CC0 e liber; CC-BY cere să menționezi autorul.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="prompt">
-      <header><span class="kicker">Demo etapa 4 · reclamă din poze și modele 3D</span><button class="btn copy" type="button" data-copy="p-ad">Copiază</button></header>
-      <pre id="p-ad"><span class="t">Reclamă premium</span>
-Studiază skill-ul meu motion-director. Creează o reclamă premium pentru [PRODUS] din modelele 3D și pozele atașate, schimbând pozițiile personajului. Începe cu o lumină albă care se stinge treptat. Adaugă treceri frumoase ale camerei pe lângă obiecte și elemente 3D de interfață. Final: animația spectaculoasă a logoului [BRAND].</pre>
-      <p class="hint">Tragi în chat cele 5 PNG și fișierele .glb. La meniu: 8 + 12, 16:9, 20 de secunde, cu muzică.</p>
-    </div>
-  </div>
-</section>
-
-<footer class="band dark foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="sub"><span class="kicker">Lecția</span><p>Motion graphics cu Claude: skill, stil, referință, imagini și 3D.</p></div>
-      <div class="sub"><span class="kicker">Skill</span><p class="muted">motion-director pornește de la skill-ul vizavi_motion v1.6.1 de la VIZAVI Academy.</p></div>
-      <div class="sub"><span class="kicker">Navigare</span><p><a href="#top">Înapoi sus ↑</a></p></div>
-    </div>
-    <p class="giant" aria-hidden="true">NOVA<i>.</i></p>
-  </div>
+<footer class="panel foot grid-bg">
+  <svg class="lg" role="img" aria-label="Nova Sapiens" xmlns="http://www.w3.org/2000/svg" viewBox="93.10 187.30 410.10 74.50"><path fill="currentColor" fill-rule="nonzero" d="M198.58 235.48L181.21 210.47L176.47 210.47L176.47 247.33L182.52 247.33L182.52 222.32L199.90 247.33L204.64 247.33L204.64 210.47L198.58 210.47L198.58 235.48M223.69 248.01C227.59 248.01 230.85 246.70 233.53 244.01C236.22 241.33 237.59 238.06 237.59 234.17C237.59 230.27 236.22 227.01 233.53 224.32C230.85 221.63 227.59 220.32 223.69 220.32C219.84 220.32 216.53 221.63 213.84 224.32C211.16 227.01 209.79 230.27 209.79 234.17C209.79 238.06 211.16 241.33 213.84 244.01C216.53 246.70 219.84 248.01 223.69 248.01M217.84 240.12C216.26 238.54 215.48 236.54 215.48 234.17C215.48 231.80 216.26 229.80 217.84 228.22C219.42 226.64 221.37 225.85 223.69 225.85C226.01 225.85 227.95 226.64 229.53 228.22C231.11 229.80 231.90 231.80 231.90 234.17C231.90 236.54 231.11 238.54 229.53 240.12C227.95 241.70 226.01 242.49 223.69 242.49C221.37 242.49 219.42 241.70 217.84 240.12M251.85 241.01L244.48 221.00L238.27 221.00L248.53 247.33L255.11 247.33L265.38 221.00L259.17 221.00L251.85 241.01M288.38 224.74C286.22 221.79 283.17 220.32 279.17 220.32C275.53 220.32 272.48 221.63 269.90 224.32C267.32 227.01 266.06 230.27 266.06 234.17C266.06 238.01 267.32 241.33 269.90 244.01C272.48 246.70 275.53 248.01 279.17 248.01C283.17 248.01 286.22 246.54 288.38 243.54L288.38 247.33L294.07 247.33L294.07 221.00L288.38 221.00L288.38 224.74M274.11 240.22C272.53 238.59 271.74 236.59 271.74 234.17C271.74 231.74 272.53 229.74 274.11 228.16C275.69 226.53 277.69 225.74 280.06 225.74C282.43 225.74 284.43 226.53 286.01 228.16C287.59 229.74 288.38 231.74 288.38 234.17C288.38 236.59 287.59 238.59 286.01 240.22C284.43 241.80 282.43 242.59 280.06 242.59C277.69 242.59 275.69 241.80 274.11 240.22M326.12 248.01C330.02 248.01 333.18 247.07 335.55 245.12C337.97 243.17 339.18 240.48 339.18 237.17C339.45 233.64 337.34 231.11 335.39 229.59C334.81 229.11 333.92 228.59 332.71 228.11C331.55 227.64 330.65 227.27 329.97 227.06C329.34 226.79 328.34 226.48 326.91 226.01C321.28 224.27 319.49 223.00 319.49 220.27C319.49 217.48 321.76 215.69 325.28 215.69C328.92 215.69 331.49 217.42 333.02 220.85L338.13 217.90C335.76 212.84 331.18 209.79 325.28 209.79C322.02 209.79 319.23 210.74 316.91 212.69C314.59 214.58 313.44 217.16 313.44 220.42C313.44 223.74 314.65 226.16 317.02 227.85C319.49 229.48 321.23 230.16 324.76 231.22C327.86 232.17 330.07 233.06 331.28 233.85C332.50 234.64 333.13 235.75 333.13 237.27C333.13 240.17 330.86 242.12 326.28 242.12C321.65 242.12 318.60 240.06 317.12 235.90L311.91 238.96C313.86 244.59 319.02 248.01 326.12 248.01M365.24 224.74C363.08 221.79 360.02 220.32 356.02 220.32C352.39 220.32 349.34 221.63 346.76 224.32C344.18 227.01 342.91 230.27 342.91 234.17C342.91 238.01 344.18 241.33 346.76 244.01C349.34 246.70 352.39 248.01 356.02 248.01C360.02 248.01 363.08 246.54 365.24 243.54L365.24 247.33L370.92 247.33L370.92 221.00L365.24 221.00L365.24 224.74M350.97 240.22C349.39 238.59 348.60 236.59 348.60 234.17C348.60 231.74 349.39 229.74 350.97 228.16C352.55 226.53 354.55 225.74 356.92 225.74C359.29 225.74 361.29 226.53 362.87 228.16C364.45 229.74 365.24 231.74 365.24 234.17C365.24 236.59 364.45 238.59 362.87 240.22C361.29 241.80 359.29 242.59 356.92 242.59C354.55 242.59 352.55 241.80 350.97 240.22M392.08 220.32C388.08 220.32 385.03 221.79 382.87 224.79L382.87 221.00L377.18 221.00L377.18 257.86L382.87 257.86L382.87 243.59C385.03 246.54 388.08 248.01 392.08 248.01C395.71 248.01 398.77 246.70 401.35 244.01C403.93 241.33 405.19 238.06 405.19 234.17C405.19 230.32 403.93 227.06 401.35 224.37C398.77 221.69 395.71 220.32 392.08 220.32M385.24 240.22C383.66 238.59 382.87 236.59 382.87 234.17C382.87 231.74 383.66 229.74 385.24 228.16C386.82 226.53 388.82 225.74 391.19 225.74C393.56 225.74 395.56 226.53 397.14 228.16C398.72 229.74 399.51 231.74 399.51 234.17C399.51 236.59 398.72 238.59 397.14 240.22C395.56 241.80 393.56 242.59 391.19 242.59C388.82 242.59 386.82 241.80 385.24 240.22M415.35 216.00C416.82 214.53 416.82 212.32 415.40 210.90C413.98 209.42 411.66 209.42 410.24 210.90C408.82 212.32 408.82 214.53 410.24 216.00C411.71 217.42 413.92 217.42 415.35 216.00M415.66 247.33L415.66 221.00L409.98 221.00L409.98 247.33L415.66 247.33M447.30 236.59C447.46 235.59 447.51 234.80 447.51 234.22C447.51 230.38 446.24 227.06 443.77 224.37C441.30 221.69 438.14 220.32 434.29 220.32C430.24 220.32 426.87 221.63 424.29 224.32C421.71 226.95 420.39 230.22 420.39 234.17C420.39 238.17 421.71 241.48 424.34 244.12C426.97 246.70 430.45 248.01 434.71 248.01C439.82 248.01 443.66 246.12 446.24 242.27L441.56 239.54C440.03 241.70 437.77 242.80 434.77 242.80C430.40 242.80 427.19 240.59 426.34 236.59L447.30 236.59M426.29 231.96C427.08 227.95 430.03 225.48 434.24 225.48C437.98 225.48 440.98 227.69 441.77 231.96L426.29 231.96M465.98 220.32C462.24 220.32 459.56 221.69 457.82 224.37L457.82 221.00L452.13 221.00L452.13 247.33L457.82 247.33L457.82 233.22C457.82 228.11 460.51 225.64 464.51 225.64C468.14 225.64 470.40 227.80 470.40 231.74L470.40 247.33L476.09 247.33L476.09 231.17C476.09 224.43 472.04 220.32 465.98 220.32M486.93 228.27C486.93 226.43 488.61 225.48 490.77 225.48C493.14 225.48 494.83 226.48 495.72 228.48L500.51 225.80C498.67 222.37 495.14 220.32 490.77 220.32C488.03 220.32 485.72 221.06 483.87 222.53C482.03 224.00 481.14 225.95 481.14 228.37C481.03 233.90 486.35 235.48 490.30 236.48C493.09 237.17 495.30 238.17 495.30 239.85C495.30 241.80 493.83 242.80 490.82 242.80C487.82 242.80 485.88 241.54 484.98 239.01L480.08 241.85C481.77 245.70 485.61 248.01 490.82 248.01C493.77 248.01 496.20 247.28 498.14 245.85C500.09 244.43 501.09 242.43 501.09 239.91C501.20 234.27 495.93 232.59 491.88 231.69C489.14 230.90 486.93 230.01 486.93 228.27"/><path fill="currentColor" fill-rule="evenodd" d="M104.74 194.83C110.04 194.83 114.38 199.17 114.38 204.47L114.38 229.17C114.38 230.39 115.00 231.72 116.01 232.42L130.89 242.68L137.58 247.29C139.56 248.65 142.29 248.15 143.65 246.18C145.01 244.20 144.51 241.47 142.54 240.11L126.54 229.08C125.92 228.59 125.51 227.83 125.51 226.97L125.51 192.64C125.51 190.30 127.98 189.26 129.93 190.58L148.29 203.23C149.54 204.09 150.20 205.49 150.17 206.91L150.18 244.97C150.18 248.48 148.26 251.56 145.43 253.24C141.13 255.78 137.09 254.23 133.74 251.77L109.31 234.93C107.39 233.60 104.64 234.01 103.24 236.04C101.54 237.74 102.38 240.75 104.35 242.11L121.88 254.17C123.18 255.06 123.51 256.87 122.61 258.17L122.61 258.17C121.71 259.47 119.91 259.80 118.61 258.90L99.39 245.65C96.70 243.74 95.09 240.98 95.09 237.64L95.09 204.47C95.09 199.17 99.43 194.83 104.74 194.83"/></svg>
+  <p>Ghid pentru lecția Motion graphics cu Claude: skill, stil, referință, imagini și 3D.</p>
+  <p style="font-size:14.5px">motion-director pornește de la skill-ul vizavi_motion v1.6.1 de la VIZAVI Academy. <a href="#top">Înapoi sus ↑</a></p>
 </footer>
+
+</main>
 
 <script>
 (function(){
-  // Link to the skill archive (Drive, GitHub, site). Empty = button stays inactive.
+  // Link to the skill archive. Empty = button stays inactive.
   var DOWNLOAD_URL = "motion-director-v1.9.0-en.zip";
   var dl = document.getElementById('dl'), note = document.getElementById('dl-note');
   if (DOWNLOAD_URL) { dl.href = DOWNLOAD_URL; dl.target = "_blank"; dl.rel = "noopener"; note.hidden = true; }
 
-  // copy buttons
   document.addEventListener('click', function(e){
     var b = e.target.closest('[data-copy]'); if (!b) return;
     var src = document.getElementById(b.getAttribute('data-copy')); if (!src) return;
@@ -780,28 +677,26 @@ Studiază skill-ul meu motion-director. Creează o reclamă premium pentru [PROD
   var NS = 'http://www.w3.org/2000/svg';
   function mk(tag, attrs, parent){ var el = document.createElementNS(NS, tag); for (var k in attrs) el.setAttribute(k, attrs[k]); if (parent) parent.appendChild(el); return el; }
 
-  // pixel balloon
   var px = document.getElementById('px-balloon');
   var map = ["....RRRR....","..RWRYYRRR..",".RWRRYYRRRD.","RRRRRYYRRRRD","RRRRRYYRRRRD","RRRRRYYRRRRD",".RRRRYYRRRD.","..RRRYYRRD..","...RRYYRD...","....RRRD....","....K..K....","....K..K....","....BBBB....","....BBBB...."];
   var pal = {R:'#FF004D',Y:'#FFEC27',W:'#FFF1E8',D:'#7E2553',K:'#C2C3C7',B:'#AB5236'};
   map.forEach(function(row, y){ row.split('').forEach(function(ch, x){ if (pal[ch]) mk('rect', {x:124+x*6, y:36+y*6, width:6, height:6, fill:pal[ch]}, px); }); });
 
-  // hero: the ball paints the grey city
+  // hero: the ball paints the grey city in the lesson's pastels
   var city = document.getElementById('city-b');
   var roofs = [130, 82, 150, 104, 122, 70];
+  var paint = ['#D5E6FD', '#FFF1C0', '#D6FFDC', '#FFDAFA', '#D5E6FD', '#FFF1C0'];
   var cx = function(i){ return 52 + i*96; };
   var blds = roofs.map(function(y, i){
     var x = 12 + i*96, g = mk('g', {}, city);
-    var r = mk('rect', {x:x, y:y, width:80, height:220-y, 'class':'bld'}, g);
+    var r = mk('rect', {x:x, y:y, width:80, height:220-y, rx:8, fill:'#E4E3F3'}, g);
     var wins = [], rows = Math.floor((220 - y - 22) / 26);
-    for (var row = 0; row < rows; row++) for (var col = 0; col < 2; col++) wins.push(mk('rect', {x:x+18+col*30, y:y+16+row*26, width:14, height:12, 'class':'win'}, g));
-    return {r:r, wins:wins};
+    for (var row = 0; row < rows; row++) for (var col = 0; col < 2; col++) wins.push(mk('rect', {x:x+18+col*30, y:y+16+row*26, width:14, height:12, rx:3, fill:'#FFFFFF'}, g));
+    return {r:r, wins:wins, on:paint[i]};
   });
   var bx = document.getElementById('ball-x'), by = document.getElementById('ball-y');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function paintAll(){ blds.forEach(function(b){ b.r.style.fill = '#0A0A0A'; b.wins.forEach(function(w){ w.style.fill = '#FF4C00'; }); }); bx.setAttribute('transform', 'translate(' + cx(5) + ' ' + (roofs[5]-12) + ')'); }
-
+  function paintAll(){ blds.forEach(function(b){ b.r.style.fill = b.on; b.wins.forEach(function(w){ w.style.fill = '#433AE8'; }); }); bx.setAttribute('transform', 'translate(' + cx(5) + ' ' + (roofs[5]-12) + ')'); }
   if (reduce || !bx.animate) {
     paintAll();
     if (reduce) document.querySelectorAll('svg').forEach(function(s){ if (s.pauseAnimations) s.pauseAnimations(); });
@@ -820,11 +715,10 @@ Studiază skill-ul meu motion-director. Creează o reclamă premium pentru [PROD
   by.animate(ys, {duration:T, iterations:Infinity});
   bx.animate([{opacity:0},{opacity:1, offset:.03},{opacity:1, offset:.93},{opacity:0}], {duration:T, iterations:Infinity});
   blds.forEach(function(b, i){
-    var t = i === 0 ? 0.01 : i*hop;
-    var on = Math.min(t + 0.012, 0.95);
+    var t = i === 0 ? 0.01 : i*hop, on = Math.min(t + 0.012, 0.95);
     var f = function(a, c){ return [{offset:0}, {offset:t}, {offset:on}, {offset:0.95}, {offset:1}].map(function(fr, j){ fr[c] = (j < 2 || j === 4) ? a.off : a.on; return fr; }); };
-    b.r.animate(f({off:'#D6D6D6', on:'#0A0A0A'}, 'fill'), {duration:T, iterations:Infinity});
-    b.wins.forEach(function(w){ w.animate(f({off:'#FFFFFF', on:'#FF4C00'}, 'fill'), {duration:T, iterations:Infinity}); });
+    b.r.animate(f({off:'#E4E3F3', on:b.on}, 'fill'), {duration:T, iterations:Infinity});
+    b.wins.forEach(function(w){ w.animate(f({off:'#FFFFFF', on:'#433AE8'}, 'fill'), {duration:T, iterations:Infinity}); });
   });
 })();
 </script>
